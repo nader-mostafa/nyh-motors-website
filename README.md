@@ -80,5 +80,4 @@ git clone https://github.com/YOUR_USERNAME/nyh-motors-website.git
 ---
 
 ## Author
-
-Developed by Nader Mostafa
+Nader Mostafa
