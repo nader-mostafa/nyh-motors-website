@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — NYH Motors</title>
+  <meta name="description" content="NYH Motors Admin Control Panel — manage inventory, articles and users.">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ── Admin-specific styles ── */
+    .admin-banner{background:linear-gradient(135deg,#0a0a1a,#1a0a3e,#0f0f1a);border-radius:var(--radius);padding:2.5rem;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;position:relative;overflow:hidden;}
+    .admin-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(99,37,255,.18),transparent 60%);pointer-events:none;}
+    .admin-banner h2{color:#fff;margin-bottom:.3rem;font-size:1.9rem;}
+    .admin-banner p{color:rgba(255,255,255,.65);margin:0;font-size:.95rem;}
+    .admin-shield{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#6325ff,#a855f7);display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;flex-shrink:0;box-shadow:0 8px 24px rgba(99,37,255,.4);}
+    .admin-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem;margin-bottom:2.5rem;}
+    .astat{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:1rem;}
+    .astat-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;flex-shrink:0;}
+    .astat-icon.purple{background:linear-gradient(135deg,#6325ff,#a855f7);}
+    .astat-icon.blue{background:linear-gradient(135deg,#0ea5e9,#38bdf8);}
+    .astat-icon.green{background:linear-gradient(135deg,#10b981,#34d399);}
+    .astat-icon.orange{background:linear-gradient(135deg,#f59e0b,#fbbf24);}
+    .astat-num{font-size:1.8rem;font-weight:700;color:var(--accent-color);font-family:var(--font-display);line-height:1;}
+    .astat-lbl{font-size:.78rem;color:#888;text-transform:uppercase;letter-spacing:.7px;margin-top:.25rem;}
+    .admin-section-title{font-size:1.15rem;font-weight:700;margin:2rem 0 1rem;display:flex;align-items:center;gap:.7rem;padding-bottom:.7rem;border-bottom:1px solid var(--border-color);}
+    .admin-section-title i{color:#6325ff;}
+    .admin-table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border-color);margin-bottom:2.5rem;}
+    .admin-table{width:100%;border-collapse:collapse;background:var(--card-bg);}
+    .admin-table th{padding:.9rem 1.1rem;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.8px;color:#888;border-bottom:1px solid var(--border-color);background:var(--secondary-color);white-space:nowrap;}
+    .admin-table td{padding:.9rem 1.1rem;border-bottom:1px solid var(--border-color);font-size:.9rem;vertical-align:middle;}
+    .admin-table tr:last-child td{border-bottom:none;}
+    .admin-table tr:hover td{background:var(--secondary-color);}
+    .tbl-badge{display:inline-block;padding:.2rem .65rem;border-radius:999px;font-size:.72rem;font-weight:600;}
+    .tbl-badge.stock{background:#d1fae5;color:#065f46;}
+    .tbl-badge.pending{background:#fef3c7;color:#92400e;}
+    .tbl-badge.sold{background:#fee2e2;color:#991b1b;}
+    .tbl-badge.published{background:#dbeafe;color:#1e40af;}
+    .tbl-badge.admin-role{background:rgba(99,37,255,.12);color:#6325ff;}
+    .tbl-badge.user-role{background:var(--secondary-color);color:#888;}
+    .tbl-actions{display:flex;gap:.5rem;align-items:center;}
+    .tbl-btn{padding:.3rem .7rem;border:none;border-radius:7px;cursor:pointer;font-size:.78rem;font-weight:600;transition:opacity .2s;}
+    .tbl-btn:hover{opacity:.8;}
+    .tbl-btn.edit{background:rgba(99,37,255,.12);color:#6325ff;}
+    .tbl-btn.del{background:#fee2e2;color:#991b1b;}
+    .tbl-btn.view{background:rgba(14,165,233,.12);color:#0ea5e9;}
+    .add-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1.2rem;background:linear-gradient(135deg,#6325ff,#a855f7);color:#fff;border:none;border-radius:10px;font-size:.88rem;font-weight:600;cursor:pointer;transition:opacity .2s;margin-bottom:1rem;}
+    .add-btn:hover{opacity:.88;}
+    .admin-access-denied{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;text-align:center;gap:1rem;}
+    .admin-access-denied i{font-size:4rem;color:#991b1b;}
+    .admin-access-denied h2{color:#991b1b;}
+    .admin-content{display:none;}
+    .tbl-car-thumb{width:56px;height:38px;object-fit:cover;border-radius:6px;}
+    .quick-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+    .qa-card{flex:1;min-width:160px;background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.2rem;text-align:center;cursor:pointer;transition:all .25s;text-decoration:none;color:var(--text-color);}
+    .qa-card:hover{border-color:#6325ff;box-shadow:0 0 0 3px rgba(99,37,255,.1);}
+    .qa-card i{font-size:1.5rem;color:#6325ff;margin-bottom:.5rem;display:block;}
+    .qa-card span{font-size:.85rem;font-weight:600;}
+    @media(max-width:700px){.admin-stats{grid-template-columns:1fr 1fr;}.admin-banner{flex-direction:column;}.quick-actions{flex-direction:column;}}
+  </style>
+</head>
+<body class="layout-topbar">
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height:40px;border-radius:50%;vertical-align:middle;margin-right:8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cars.html">Inventory</a></li>
+      <li><a href="compare.html">Compare</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="upcoming.html">Upcoming</a></li>
+      <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+      <li id="adminNavItem"><a href="admin.html" class="active"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+      <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Logout</a></li>
+    </ul></nav>
+    <div class="controls-container"><button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button></div>
+  </header>
+
+  <main class="animate-fade-in">
+
+    <!-- ACCESS DENIED (shown if not admin) -->
+    <div class="admin-access-denied" id="accessDenied">
+      <i class="fa-solid fa-lock"></i>
+      <h2>Access Restricted</h2>
+      <p style="color:#888;max-width:400px;">This page is only accessible to administrators. Please log in with an admin account to continue.</p>
+      <a href="login.html" class="btn" style="margin-top:.5rem;"><i class="fa-solid fa-arrow-right-to-bracket"></i> Go to Login</a>
+    </div>
+
+    <!-- ADMIN CONTENT (shown if admin) -->
+    <div class="admin-content" id="adminContent">
+
+      <!-- Banner -->
+      <div class="admin-banner">
+        <div>
+          <p style="font-size:.78rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);margin-bottom:.4rem;"><i class="fa-solid fa-shield-halved"></i> &nbsp;Admin Control Panel</p>
+          <h2>Welcome, Administrator</h2>
+          <p>Manage inventory, articles, users and platform settings from one place.</p>
+        </div>
+        <div class="admin-shield"><i class="fa-solid fa-shield-halved"></i></div>
+      </div>
+
+      <!-- Stats -->
+      <div class="admin-stats">
+        <div class="astat">
+          <div class="astat-icon purple"><i class="fa-solid fa-car"></i></div>
+          <div><div class="astat-num">6</div><div class="astat-lbl">Vehicles</div></div>
+        </div>
+        <div class="astat">
+          <div class="astat-icon blue"><i class="fa-solid fa-users"></i></div>
+          <div><div class="astat-num">3</div><div class="astat-lbl">Users</div></div>
+        </div>
+        <div class="astat">
+          <div class="astat-icon green"><i class="fa-solid fa-newspaper"></i></div>
+          <div><div class="astat-num">4</div><div class="astat-lbl">Articles</div></div>
+        </div>
+        <div class="astat">
+          <div class="astat-icon orange"><i class="fa-solid fa-road"></i></div>
+          <div><div class="astat-num">3</div><div class="astat-lbl">Test Drives</div></div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="admin-section-title"><i class="fa-solid fa-bolt"></i> Quick Actions</div>
+      <div class="quick-actions">
+        <a href="cars.html" class="qa-card"><i class="fa-solid fa-plus-circle"></i><span>Add Vehicle</span></a>
+        <a href="blog.html" class="qa-card"><i class="fa-solid fa-pen-to-square"></i><span>New Article</span></a>
+        <a href="test-drive.html" class="qa-card"><i class="fa-solid fa-calendar-check"></i><span>View Bookings</span></a>
+        <a href="register.html" class="qa-card"><i class="fa-solid fa-user-plus"></i><span>Add User</span></a>
+      </div>
+
+      <!-- Inventory Table -->
+      <div class="admin-section-title"><i class="fa-solid fa-car"></i> Manage Inventory</div>
+      <button class="add-btn" onclick="alert('Add vehicle form coming soon!')"><i class="fa-solid fa-plus"></i> Add New Vehicle</button>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Vehicle</th>
+              <th>Price (EGP)</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img src="assets/images/car-tesla.jpg" onerror="this.src='assets/images/default.jpg'" alt="Tesla" class="tbl-car-thumb"></td>
+              <td><strong>2026 Tesla Model S Plaid</strong></td>
+              <td>4,499,500</td>
+              <td><span class="tbl-badge stock">In Stock</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='car-details.html?car=tesla'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit feature coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete feature coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><img src="assets/images/car-porsche.jpg" onerror="this.src='assets/images/default.jpg'" alt="BMW" class="tbl-car-thumb"></td>
+              <td><strong>BMW</strong></td>
+              <td>5,190,000</td>
+              <td><span class="tbl-badge stock">In Stock</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='car-details.html?car=BMW'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit feature coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete feature coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><img src="assets/images/car-ferrari.jpg" onerror="this.src='assets/images/default.jpg'" alt="Ferrari" class="tbl-car-thumb"></td>
+              <td><strong>Ferrari F8 Tributo</strong></td>
+              <td>13,800,000</td>
+              <td><span class="tbl-badge stock">In Stock</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='car-details.html?car=ferrari'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit feature coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete feature coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><img src="assets/images/car-bmw.jpg" onerror="this.src='assets/images/default.jpg'" alt="BMW X5" class="tbl-car-thumb"></td>
+              <td><strong>2026 BMW X5 M Competition</strong></td>
+              <td>5,705,000</td>
+              <td><span class="tbl-badge stock">In Stock</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='car-details.html?car=bmw'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit feature coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete feature coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><img src="assets/images/car-mustang.jpg" onerror="this.src='assets/images/default.jpg'" alt="Mustang" class="tbl-car-thumb"></td>
+              <td><strong>Ford Mustang Shelby GT500</strong></td>
+              <td>3,749,750</td>
+              <td><span class="tbl-badge sold">Reserved</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='car-details.html?car=mustang'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit feature coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete feature coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><img src="assets/images/car-lambo.jpg" onerror="this.src='assets/images/default.jpg'" alt="Bugatti" class="tbl-car-thumb"></td>
+              <td><strong>BUGATTI</strong></td>
+              <td>11,474,750</td>
+              <td><span class="tbl-badge stock">In Stock</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='car-details.html?car=BUGATTI'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit feature coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete feature coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Articles Table -->
+      <div class="admin-section-title"><i class="fa-solid fa-newspaper"></i> Manage Articles</div>
+      <button class="add-btn" onclick="alert('New article editor coming soon!')"><i class="fa-solid fa-plus"></i> New Article</button>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Title</th><th>Category</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>The Future of Electric Sports Cars</strong></td>
+              <td>Electric Vehicles</td>
+              <td><span class="tbl-badge published">Published</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='article-ev-future.html'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><strong>Top 10 Maintenance Tips for Supercars</strong></td>
+              <td>Maintenance</td>
+              <td><span class="tbl-badge published">Published</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='article-maintenance.html'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><strong>How to Choose Your Perfect Luxury Vehicle</strong></td>
+              <td>Buying Guide</td>
+              <td><span class="tbl-badge published">Published</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='article-buying-guide.html'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><strong>Track Day Essentials: What You Need to Know</strong></td>
+              <td>Lifestyle</td>
+              <td><span class="tbl-badge published">Published</span></td>
+              <td><div class="tbl-actions"><button class="tbl-btn view" onclick="location.href='article-track-day.html'"><i class="fa-solid fa-eye"></i> View</button><button class="tbl-btn edit" onclick="alert('Edit coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Users Table -->
+      <div class="admin-section-title"><i class="fa-solid fa-users"></i> Manage Users</div>
+      <button class="add-btn" onclick="location.href='register.html'"><i class="fa-solid fa-plus"></i> Add User</button>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Name</th><th>Email</th><th>Role</th><th>Member Since</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Administrator</strong></td>
+              <td>admin@nyhmotors.com</td>
+              <td><span class="tbl-badge admin-role"><i class="fa-solid fa-shield-halved"></i> Admin</span></td>
+              <td>January 2026</td>
+              <td><div class="tbl-actions"><button class="tbl-btn edit" onclick="alert('Edit coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button></div></td>
+            </tr>
+            <tr>
+              <td><strong>3aps ehap</strong></td>
+              <td>Hana@email.com</td>
+              <td><span class="tbl-badge user-role">User</span></td>
+              <td>March 2026</td>
+              <td><div class="tbl-actions"><button class="tbl-btn edit" onclick="alert('Edit coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+            <tr>
+              <td><strong>Nouran Mohamed</strong></td>
+              <td>nouran@email.com</td>
+              <td><span class="tbl-badge user-role">User</span></td>
+              <td>April 2026</td>
+              <td><div class="tbl-actions"><button class="tbl-btn edit" onclick="alert('Edit coming soon!')"><i class="fa-solid fa-pen"></i> Edit</button><button class="tbl-btn del" onclick="alert('Delete coming soon!')"><i class="fa-solid fa-trash"></i></button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- /adminContent -->
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height:24px;border-radius:50%;vertical-align:middle;margin-right:6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div>
+      <div class="footer-col"><h4>Links</h4><a href="index.html">Home</a><a href="cars.html">Inventory</a><a href="blog.html">Blog</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">contact@nyhmotors.com</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Show admin content only if role is admin
+    const role = localStorage.getItem('userRole');
+    if (role === 'admin') {
+      document.getElementById('adminContent').style.display = 'block';
+      document.getElementById('adminNavItem').style.display = '';
+    } else {
+      document.getElementById('accessDenied').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>

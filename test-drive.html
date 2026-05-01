@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Test Drive — NYH Motors</title>
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .test-drive-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 2rem; }
+    .test-drive-info img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); height: 340px; object-fit: cover; margin-bottom: 2rem; }
+    .test-drive-info ul { list-style: none; padding: 0; }
+    .test-drive-info ul li { padding: 0.7rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 0.8rem; color: #666; font-size: 0.95rem; }
+    .test-drive-info ul li i { color: var(--primary-color); width: 18px; }
+    .big-form { max-width: 100%; }
+    .big-form .form-group input, .big-form .form-group select, .big-form .form-group textarea { font-size: 1rem; padding: 1rem 1.1rem; }
+    .big-form .form-group label { font-size: 1rem; margin-bottom: 0.6rem; }
+    @media(max-width:800px){ .test-drive-layout{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body class="layout-topbar">
+
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cars.html">Inventory</a></li>
+      <li><a href="compare.html">Compare</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="upcoming.html">Upcoming</a></li>
+      <li class="dropdown">
+        <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="dealerships.html">Dealerships</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="test-drive.html" class="active">Test Drive</a></li>
+        </ul>
+      </li>
+      <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+      <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+    </ul></nav>
+    <div class="controls-container"><button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button></div>
+  </header>
+
+  <main class="animate-fade-in">
+    <h2 class="section-title">Book a Test Drive</h2>
+    <p class="section-subtitle">Experience your dream car in person — fill in the form and we'll confirm within 24 hours.</p>
+
+    <div class="test-drive-layout">
+
+      <!-- Info Panel -->
+      <div class="test-drive-info">
+        <img src="assets/images/test-drive.jpg" onerror="this.src='assets/images/default.jpg'" alt="Test Drive">
+        <h3>Why Book With NYH Motors?</h3>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> Professional, pressure-free experience</li>
+          <li><i class="fa-solid fa-check"></i> Choose from over 50 premium models</li>
+          <li><i class="fa-solid fa-check"></i> Flexible morning and evening slots</li>
+          <li><i class="fa-solid fa-check"></i> On-road and track drive options available</li>
+          <li><i class="fa-solid fa-check"></i> Instant confirmation via email &amp; SMS</li>
+        </ul>
+      </div>
+
+      <!-- Form -->
+      <div>
+        <div class="form-container" style="max-width:100%; padding:2.5rem;">
+          <form action="dashboard.html" class="custom-validate big-form" novalidate>
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input type="text" id="fullname" name="FullName" placeholder="Your full name" required>
+              <span id="fullname-error" class="error-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+              <span id="email-error" class="error-message"></span>
+            </div>
+          <div class="form-group">
+    <label for="carSelect">Select Car Model</label>
+    <select id="carSelect" name="CarModel" required>
+        <option value="">-- Choose a Car --</option>
+        <option value="tesla">2026 Tesla Model S Plaid — 4,499,500 EGP</option>
+        <option value="BMW">BMW — 5,190,000 EGP</option>
+        <option value="ferrari">Ferrari F8 Tributo — 13,800,000 EGP</option>
+        <option value="bmw">2026 BMW X5 M Competition — 5,705,000 EGP</option>
+        <option value="mustang">Ford Mustang Shelby GT500 — 3,749,750 EGP</option>
+        <option value="BUGATTI">BUGATTI — 11,474,750 EGP</option>
+    </select>
+    </div>
+              <span id="carSelect-error" class="error-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="date">Preferred Date</label>
+              <input type="date" id="date" name="Date" required>
+              <span id="date-error" class="error-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="Phone" placeholder="+20 012 789 4561" required>
+              <span id="phone-error" class="error-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="notes">Additional Notes (optional)</label>
+              <textarea id="notes" name="Notes" rows="3" placeholder="Any specific requirements or preferences..."></textarea>
+            </div>
+            <button type="submit" class="btn" style="width:100%; padding:1.1rem; font-size:1.05rem; letter-spacing:0.3px;">
+              <i class="fa-solid fa-road"></i> Confirm Booking
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner"><div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div><div class="footer-col"><h4>Links</h4><a href="index.html">Home</a><a href="cars.html">Inventory</a></div><div class="footer-col"><h4>Contact</h4><a href="contact.html">contact@NYHmotors.com</a></div></div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/validation.js"></script>
+  <script>
+    // Set min date to today
+    document.getElementById('date').min = new Date().toISOString().split('T')[0];
+  </script>
+</body>
+</html>

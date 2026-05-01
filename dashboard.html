@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — NYH Motors</title>
+  <link rel="stylesheet" href="css/themes.css"><link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .dash-welcome{background:linear-gradient(135deg,#0f0f1a,#1a1a3e);border-radius:var(--radius);padding:2.5rem;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;}
+    .dash-welcome h2{color:#fff;margin-bottom:.3rem;font-size:1.8rem;}
+    .dash-welcome p{color:rgba(255,255,255,.7);margin:0;font-size:.95rem;}
+    .avatar{width:64px;height:64px;border-radius:50%;background:var(--accent-color);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;font-family:var(--font-display);flex-shrink:0;}
+    .dash-section-title{font-size:1.2rem;font-weight:600;margin:2rem 0 1rem;display:flex;align-items:center;gap:.6rem;}
+    .dash-section-title i{color:var(--accent-color);}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-bottom:2rem;}
+    .info-card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.4rem;box-shadow:var(--shadow);}
+    .info-card label{font-size:.75rem;text-transform:uppercase;letter-spacing:.8px;color:#888;display:block;margin-bottom:.3rem;}
+    .info-card span{font-weight:600;font-size:1rem;}
+    .test-drive-card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.4rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:1.2rem;}
+    .test-drive-card .td-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent-color),#ff7a5a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;flex-shrink:0;}
+    .test-drive-card .td-info h4{font-size:.95rem;margin-bottom:.2rem;}
+    .test-drive-card .td-info p{font-size:.83rem;color:#888;margin:0;}
+    .td-status{margin-left:auto;padding:.25rem .75rem;border-radius:999px;font-size:.75rem;font-weight:600;}
+    .td-status.confirmed{background:#d1fae5;color:#065f46;}
+    .td-status.pending{background:#fef3c7;color:#92400e;}
+    .stat-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;margin-bottom:2rem;}
+    .stat-card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.4rem;box-shadow:var(--shadow);text-align:center;}
+    .stat-card .s-num{font-size:2rem;font-weight:700;color:var(--accent-color);font-family:var(--font-display);}
+    .stat-card .s-lbl{font-size:.78rem;color:#888;text-transform:uppercase;letter-spacing:.6px;margin-top:.3rem;}
+  </style>
+</head>
+<body class="layout-topbar">
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cars.html">Inventory</a></li>
+      <li><a href="compare.html">Compare</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="upcoming.html">Upcoming</a></li>
+      <li class="dropdown">
+        <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="dealerships.html">Dealerships</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="test-drive.html">Test Drive</a></li>
+        </ul>
+      </li>
+      <li><a href="dashboard.html" class="active"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+      <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Logout</a></li>
+    </ul></nav>
+    <div class="controls-container">
+      <button id="layoutToggleBtn" class="toggle-btn" title="Switch Layout"><i class="fa-solid fa-table-columns"></i> <span class="lbl-topbar">Sidebar</span><span class="lbl-sidebar">Top Nav</span></button>
+      <button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </header>
+
+
+
+  <main class="animate-fade-in">
+    <!-- Welcome Banner -->
+    <div class="dash-welcome">
+      <div>
+        <h2>Welcome back, Nouran!</h2>
+        <p>Your NYH Motors dashboard — manage your profile and test drive bookings.</p>
+      </div>
+      <div class="avatar">J</div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stat-cards">
+      <div class="stat-card"><div class="s-num">3</div><div class="s-lbl">Test Drives</div></div>
+      <div class="stat-card"><div class="s-num">2</div><div class="s-lbl">Favourites</div></div>
+      <div class="stat-card"><div class="s-num">4</div><div class="s-lbl">Brochures</div></div>
+      <div class="stat-card"><div class="s-num">1</div><div class="s-lbl">Enquiries</div></div>
+    </div>
+
+    <!-- User Info -->
+    <div class="dash-section-title"><i class="fa-solid fa-user-circle"></i> Account Information</div>
+    <div class="info-grid">
+      <div class="info-card"><label>Full Name</label><span>3aps ehap </span></div>
+      <div class="info-card"><label>Email</label><span>Hana@email.com</span></div>
+      <div class="info-card"><label>Phone</label><span>+20 127 086 6789</span></span></div>
+      <div class="info-card"><label>Member Since</label><span> March 2026</span></div>
+      <div class="info-card"><label>Account Type</label><span>Premium Member</span></div>
+      <div class="info-card"><label>Location</label><span>Helwan , الدواجن</span></div>
+    </div>
+
+    <!-- Test Drives -->
+    <div class="dash-section-title"><i class="fa-solid fa-road"></i> Booked Test Drives</div>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+      <div class="test-drive-card">
+        <div class="td-icon"><i class="fa-solid fa-car"></i></div>
+        <div class="td-info">
+          <h4>2026 Tesla Model S Plaid</h4>
+          <p><i class="fa-regular fa-calendar"></i> September 3, 2026 &nbsp;·&nbsp; <i class="fa-solid fa-location-dot"></i> NYH Motors Manhattan Showroom</p>
+        </div>
+        <span class="td-status confirmed">Confirmed</span>
+      </div>
+      <div class="test-drive-card">
+        <div class="td-icon"><i class="fa-solid fa-car"></i></div>
+        <div class="td-info">
+          <h4>Ferrari F8 Tributo</h4>
+          <p><i class="fa-regular fa-calendar"></i> April 12, 2026 &nbsp;·&nbsp; <i class="fa-solid fa-location-dot"></i> NYH Motors Beverly Hills</p>
+        </div>
+        <span class="td-status confirmed">Confirmed</span>
+      </div>
+      <div class="test-drive-card">
+        <div class="td-icon"><i class="fa-solid fa-car"></i></div>
+        <div class="td-info">
+          <h4>BUGATTI</h4>
+          <p><i class="fa-regular fa-calendar"></i> March 20, 2026 &nbsp;·&nbsp; <i class="fa-solid fa-location-dot"></i> NYH Motors Miami</p>
+        </div>
+        <span class="td-status pending">Pending</span>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="dash-section-title"><i class="fa-solid fa-bolt"></i> Quick Actions</div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="cars.html" class="btn"><i class="fa-solid fa-car"></i> Browse Inventory</a>
+      <a href="test-drive.html" class="btn btn-outline"><i class="fa-solid fa-road"></i> Book Test Drive</a>
+      <a href="compare.html" class="btn btn-dark"><i class="fa-solid fa-scale-balanced"></i> Compare Cars</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div>
+      <div class="footer-col"><h4>Links</h4><a href="index.html">Home</a><a href="cars.html">Inventory</a><a href="blog.html">Blog</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">contact@NYHmotors.com</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

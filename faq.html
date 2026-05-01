@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — NYH Motors</title>
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* FAQ accordion - no layout shift, uses max-height transition only inside a min-height container */
+    .faq-wrapper { max-width: 780px; margin: 0 auto; }
+    .faq-item { margin-bottom: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; }
+    .faq-header {
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--secondary-color);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .faq-header:hover { background: var(--border-color); }
+    .faq-icon { font-size: 0.85rem; transition: transform 0.35s ease; flex-shrink: 0; margin-left: 1rem; }
+    .faq-header.open .faq-icon { transform: rotate(180deg); }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+      background: var(--card-bg);
+    }
+    .faq-body.open { max-height: 400px; }
+    .faq-body-inner { padding: 1.2rem 1.5rem; }
+    /* Page height is NOT affected because we're using max-height, no reflow of surrounding elements */
+  </style>
+</head>
+<body class="layout-topbar">
+
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cars.html">Inventory</a></li>
+      <li><a href="compare.html">Compare</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="upcoming.html">Upcoming</a></li>
+      <li class="dropdown">
+        <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="dealerships.html">Dealerships</a></li>
+          <li><a href="faq.html" class="active">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="test-drive.html">Test Drive</a></li>
+        </ul>
+      </li>
+      <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+      <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+    </ul></nav>
+    <div class="controls-container">
+      <button id="layoutToggleBtn" class="toggle-btn" title="Switch Layout"><i class="fa-solid fa-table-columns"></i> <span class="lbl-topbar">Sidebar</span><span class="lbl-sidebar">Top Nav</span></button>
+      <button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </header>
+
+
+
+  <main class="animate-fade-in">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Find answers to common questions about buying, financing, and test drives.</p>
+
+    <div class="faq-wrapper">
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          What is the return policy?
+          <span class="faq-icon">▾</span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p>We offer a 7-day money-back guarantee on all certified pre-owned vehicles. Simply return the vehicle in its original condition and we will process a full refund within 3–5 business days.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          How do I book a test drive?
+          <span class="faq-icon">▾</span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p>You can book a test drive online by visiting our <a href="test-drive.html" class="custom-link">Test Drive page</a>, selecting your preferred vehicle, date, and contact information. Alternatively, call our hotline at 1-800-AUTOELITE.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          Do you offer financing?
+          <span class="faq-icon">▾</span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p>Yes, we offer competitive financing options on all vehicles. Use our built-in <a href="car-details.html" class="custom-link">Loan Calculator</a> on each car's detail page to estimate your monthly payments based on a fixed term of up to 12 months.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          What insurance plans are available?
+          <span class="faq-icon">▾</span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p>Each vehicle has its own insurance pricing visible on its detail page. We offer Basic Coverage (liability & collision) and Premium Coverage (full comprehensive, roadside assistance, and concierge service). Visit <a href="insurance.html" class="custom-link">Insurance</a> for more details.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          Can I compare two vehicles?
+          <span class="faq-icon">▾</span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p>Absolutely! Our <a href="compare.html" class="custom-link">Compare Cars</a> tool lets you search for any two vehicles and view a full side-by-side specification comparison in real time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          Do you have upcoming models?
+          <span class="faq-icon">▾</span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p>Yes! Visit our <a href="upcoming.html" class="custom-link">Upcoming Models</a> page to see a preview of all 2027 vehicles arriving in our inventory. You can register your interest and be notified at launch.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          Where are your dealerships located?
+          <span class="faq-icon">▾</span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-body-inner">
+            <p>We have locations on the West Coast, Central US, and East Coast. Visit our <a href="dealerships.html" class="custom-link">Dealerships</a> page for addresses, hours, and contact information for each location.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner"><div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div><div class="footer-col"><h4>Links</h4><a href="index.html">Home</a><a href="cars.html">Inventory</a></div><div class="footer-col"><h4>Contact</h4><a href="contact.html">contact@NYHmotors.com</a></div></div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function toggleFaq(header) {
+      const body = header.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-header').forEach(h => h.classList.remove('open'));
+      document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+      // Open clicked if it was closed
+      if (!isOpen) {
+        header.classList.add('open');
+        body.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>

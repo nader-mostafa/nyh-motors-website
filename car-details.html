@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Details — NYH Motors</title>
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .details-hero-img{width:100%;max-height:500px;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);display:block;}
+    .details-section{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:2rem;margin-top:1.8rem;box-shadow:var(--shadow);}
+    .details-section h3{font-size:1.3rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem;}
+    .details-section h3 i{color:var(--accent-color);}
+    .car-title-bar{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;}
+    .car-price-big{font-size:2.4rem;font-weight:700;color:var(--accent-color);font-family:var(--font-display);}
+    .action-btns{display:flex;gap:.8rem;flex-wrap:wrap;}
+    .insurance-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
+    .insurance-box{background:var(--secondary-color);border:1px solid var(--border-color);border-radius:12px;padding:1.4rem;}
+    .insurance-box.featured{border-color:var(--accent-color);}
+    .insurance-box h4{margin-bottom:.4rem;}
+    .insurance-box .ins-price{font-size:1.4rem;font-weight:700;color:var(--accent-color);}
+    .tip-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.5rem;}
+    .tip-card{background:var(--secondary-color);border-radius:12px;padding:1.2rem;}
+    .tip-card i{color:var(--accent-color);font-size:1.3rem;margin-bottom:.6rem;display:block;}
+    .tip-card h5{margin-bottom:.4rem;font-size:.95rem;}
+    .tip-card p{font-size:.82rem;color:#888;margin:0;}
+    .loan-calc-box{background:var(--secondary-color);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.8rem;}
+    .calc-result{background:var(--primary-color);color:#fff;border-radius:10px;padding:1rem;text-align:center;font-size:1.1rem;font-weight:700;margin-top:1rem;display:none;}
+    .brochure-modal{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .35s ease;}
+    .brochure-modal.open{opacity:1;pointer-events:all;}
+    .brochure-modal-inner{background:var(--card-bg);border-radius:20px;width:100%;max-width:920px;height:88vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.5);transform:scale(.95);transition:transform .35s ease;}
+    .brochure-modal.open .brochure-modal-inner{transform:scale(1);}
+    .brochure-modal-header{padding:1.1rem 1.6rem;border-bottom:1px solid var(--border-color);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+    .brochure-modal-header h3{margin:0;font-size:1rem;}
+    .brochure-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--text-color);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+    .brochure-close:hover{background:var(--secondary-color);}
+    .brochure-modal iframe{width:100%;flex:1;border:none;}
+    @media(max-width:700px){.insurance-grid{grid-template-columns:1fr;}.tip-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.tip-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body class="layout-topbar">
+
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cars.html" class="active">Inventory</a></li>
+        <li><a href="compare.html">Compare</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="upcoming.html">Upcoming</a></li>
+        <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+        <li id="adminNavItem" style="display:none;"><a href="admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+        <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+      </ul>
+    </nav>
+    <div class="controls-container">
+      <button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </header>
+
+  <main class="animate-fade-in">
+    <a href="cars.html" style="display:inline-flex;align-items:center;gap:.4rem;color:#888;text-decoration:none;font-size:.88rem;margin-bottom:1.2rem;transition:color .2s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='#888'">
+      <i class="fa-solid fa-arrow-left"></i> Back to Inventory
+    </a>
+
+    <!-- Title Bar -->
+<div class="car-title-bar">
+  <div>
+    <h2 id="carTitle" style="margin-bottom:.2rem;font-size:2rem;">2026 Tesla Model S Plaid</h2>
+    <p id="carTagline" style="color:#888;margin:0;">Electric performance redefined</p>
+  </div>
+
+  <div style="text-align:right;">
+    <div class="car-price-big" id="carPrice">4,499,500 EGP</div>
+
+    <div class="action-btns" style="margin-top:.6rem;">
+      <a href="test-drive.html" class="btn">
+        <i class="fa-solid fa-road"></i> Book Test Drive
+      </a>
+
+      <button class="btn btn-outline" onclick="previewBrochure()">
+        <i class="fa-solid fa-eye"></i> Preview Brochure
+      </button>
+
+      <button class="btn btn-dark" onclick="downloadBrochure()">
+        <i class="fa-solid fa-download"></i> Download
+      </button>
+    </div>
+  </div>
+</div>
+
+    <!-- 1. Car Image -->
+    <img id="carHeroImg" class="details-hero-img" src="assets/images/default.jpg" onerror="this.src='assets/images/default.jpg'" alt="Car">
+
+    <!-- 2. Specifications -->
+    <div class="details-section">
+      <h3><i class="fa-solid fa-list-check"></i> Vehicle Specifications</h3>
+      <div id="specContent"></div>
+      <!-- Loan Calculator inside specs -->
+      <div class="loan-calc-box mt-2">
+        <h4 style="margin-bottom:1rem;"><i class="fa-solid fa-calculator"></i> Loan Calculator</h4>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="form-group"><label>Car Price</label><input type="number" id="loanPrice" readonly style="background:var(--bg-color);"></div>
+          <div class="form-group"><label>Monthly Insurance</label><input type="number" id="loanInsurance" readonly style="background:var(--bg-color);"></div>
+          <div class="form-group"><label>Loan Duration (max 12 months)</label><input type="number" id="loanMonths" value="12" min="1" max="12"></div>
+          <div class="form-group"><label>Interest Rate (%)</label><input type="number" id="loanRate" value="5" step="0.1"></div>
+        </div>
+        <button class="btn" style="width:100%;" onclick="calcLoan()">Calculate Monthly Payment</button>
+        <div class="calc-result" id="calcResult"></div>
+      </div>
+    </div>
+
+    <!-- 3. Engine Sound -->
+    <div class="details-section">
+      <h3><i class="fa-solid fa-volume-high"></i> Engine Sound</h3>
+      <p style="color:#888;font-size:.9rem;margin-bottom:1rem;">Listen to the authentic engine note of this vehicle.</p>
+      <audio controls id="carAudio" style="width:100%;">
+        Your browser does not support audio.
+      </audio>
+    </div>
+
+    <!-- 4. Insurance -->
+    <div class="details-section">
+      <h3><i class="fa-solid fa-shield-halved"></i> Insurance Plans</h3>
+      <div id="insuranceContent"></div>
+    </div>
+
+    <!-- 5. Maintenance -->
+    <div class="details-section">
+      <h3><i class="fa-solid fa-wrench"></i> Maintenance Guide</h3>
+      <p style="color:#888;font-size:.9rem;margin-bottom:1rem;">Watch our comprehensive maintenance overview for your vehicle.</p>
+      <video controls width="100%" style="border-radius:var(--radius);box-shadow:var(--shadow);display:block;">
+        <source src="assets/maintenance-video.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="tip-grid">
+        <div class="tip-card"><i class="fa-solid fa-oil-can"></i><h5>Oil &amp; Fluids</h5><p>Check engine oil, coolant and brake fluid monthly. EVs: monitor battery coolant quarterly.</p></div>
+        <div class="tip-card"><i class="fa-solid fa-circle-dot"></i><h5>Tyre Pressure</h5><p>Maintain optimal tyre pressure. Rotate tyres every 5,000–7,500 miles for even wear.</p></div>
+        <div class="tip-card"><i class="fa-solid fa-gauge-simple-high"></i><h5>Brake System</h5><p>Inspect brake pads every 10,000 miles. EVs benefit from reduced wear via regenerative braking.</p></div>
+        <div class="tip-card"><i class="fa-solid fa-battery-full"></i><h5>Battery Health</h5><p>Avoid letting the battery drop below 10% or charge above 90% for daily use to maximise longevity.</p></div>
+        <div class="tip-card"><i class="fa-solid fa-filter"></i><h5>Air Filters</h5><p>Replace cabin and engine air filters every 12,000 miles or annually, whichever comes first.</p></div>
+        <div class="tip-card"><i class="fa-solid fa-sun"></i><h5>Seasonal Care</h5><p>Use season-appropriate fluids and tyres. Store the vehicle in shade to protect paint and battery in heat.</p></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Brochure Modal -->
+  <div class="brochure-modal" id="brochureModal">
+    <div class="brochure-modal-inner">
+      <div class="brochure-modal-header">
+        <h3 id="brochureTitle"><i class="fa-solid fa-file-pdf" style="color:var(--accent-color);margin-right:.5rem;"></i> Vehicle Brochure</h3>
+        <button class="brochure-close" onclick="closeBrochure()">&times;</button>
+      </div>
+      <iframe id="brochureFrame" src=""></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div>
+      <div class="footer-col"><h4>Links</h4><a href="index.html">Home</a><a href="cars.html">Inventory</a><a href="compare.html">Compare</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">contact@NYHmotors.com</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+  // Brochure assignment: pairs of cars share a brochure
+  // Car order index: 0=tesla,1=porsche → kia | 2=ferrari,3=bmw → bmw | 4=mustang,5=lambo → kia
+  const BROCHURE_MAP = {
+    tesla:   'kia',
+    porsche: 'kia',
+    ferrari: 'bmw',
+    bmw:     'bmw',
+    mustang: 'kia',
+    lambo:   'bmw',
+  };
+  const BROCHURE_FILES = {
+    kia: 'brochures/kia.pdf',
+    bmw: 'brochures/bmw.pdf',
+  };
+  const BROCHURE_LABELS = {
+    kia: 'Kia Seltos Brochure',
+    bmw: 'BMW Series 1 Brochure',
+  };
+
+  // Sound: cars 1&2 share sound-1, cars 3&4 share sound-2, 5&6 share sound-1
+const SOUND_MAP = {
+  // Key names must match the keys in the CARS object (case-insensitive)
+  tesla:   'assets/engine-sound-1.mp4',
+  bmw:     'assets/engine-sound-2.mp4', // BMW X5
+  ferrari: 'assets/engine-sound-2.mp4',
+  mustang: 'assets/engine-sound-1.mp4',
+  bugatti: 'assets/engine-sound-1.mp4', // BUGATTI
+  // Special case for the uppercase "BMW" key which is the Porsche
+  get(key) {
+    const k = key.toLowerCase();
+    if (key === 'BMW') return 'assets/engine-sound-1.mp4'; // Porsche Taycan
+    return this[k] || this.tesla;
+  }
+};
+
+const CARS = {
+  tesla: {
+    title: '2026 Tesla Model S Plaid',
+    tagline: 'Electric performance redefined',
+    img: 'assets/images/car-tesla.jpg',
+    price: 4499500, insurance: 16000,
+    specs: [
+      ['Make / Model','2026 Tesla Model S Plaid'],
+      ['Engine','Tri-Motor Electric (1,020 hp)'],
+      ['Torque','1424 Nm'],
+      ['Range','637 km'],
+      ['0–100 km/h','1.99 seconds'],
+      ['Top Speed','322 km/h'],
+      ['Drivetrain','All-Wheel Drive'],
+      ['Seating','5 passengers'],
+      ['Cargo','793 L'],
+      ['Charging','Up to 250 kW Supercharging']
+    ],
+    insurance_detail: { basic:16000, premium:26000, desc:'Comprehensive EV coverage with roadside & battery protection.' },
+  },
+
+  BMW: {
+    title: 'BMW',
+    tagline: 'The soul of a sports car, electrified',
+    img: 'assets/images/car-porsche.jpg',
+    price: 5190000, insurance: 19500,
+    specs: [
+      ['Make / Model','BMW'],
+      ['Engine','Dual-Motor Electric (750 hp)'],
+      ['Torque','1049 Nm'],
+      ['Range','365 km'],
+      ['0–100 km/h','2.6 seconds'],
+      ['Top Speed','259 km/h'],
+      ['Drivetrain','All-Wheel Drive'],
+      ['Seating','4 passengers'],
+      ['Cargo','405 L'],
+      ['Charging','Up to 270 kW DC Fast Charge']
+    ],
+    insurance_detail: { basic:19500, premium:31000, desc:'Premium luxury EV coverage with concierge service.' },
+  },
+
+  ferrari: {
+    title: 'Ferrari F8 Tributo',
+    tagline: 'The most powerful V8 in Ferrari history',
+    img: 'assets/images/car-ferrari.jpg',
+    price: 13800000, insurance: 42500,
+    specs: [
+      ['Make / Model','Ferrari F8 Tributo'],
+      ['Engine','3.9L Twin-Turbo V8 (710 hp)'],
+      ['Torque','770 Nm'],
+      ['0–100 km/h','2.9 seconds'],
+      ['Top Speed','340 km/h'],
+      ['Drivetrain','Rear-Wheel Drive'],
+      ['Transmission','7-speed Dual-Clutch'],
+      ['Seating','2 passengers'],
+      ['Weight','1435 kg'],
+      ['Origin','Maranello, Italy']
+    ],
+    insurance_detail: { basic:42500, premium:70000, desc:'Exotic car specialist coverage with track day options.' },
+  },
+
+  bmw: {
+    title: '2026 BMW X5 M Competition',
+    tagline: 'Ultimate performance in an SUV',
+    img: 'assets/images/car-bmw.jpg',
+    price: 5705000, insurance: 21000,
+    specs: [
+      ['Make / Model','2026 BMW X5 M Competition'],
+      ['Engine','4.4L Twin-Turbo V8 (617 hp)'],
+      ['Torque','750 Nm'],
+      ['0–100 km/h','3.8 seconds'],
+      ['Top Speed','285 km/h'],
+      ['Drivetrain','xDrive All-Wheel Drive'],
+      ['Transmission','8-speed Automatic'],
+      ['Seating','5 passengers'],
+      ['Cargo','960 L'],
+      ['Origin','Munich, Germany']
+    ],
+    insurance_detail: { basic:21000, premium:34000, desc:'M-model specialist coverage with performance driving protection.' },
+  },
+
+  mustang: {
+    title: 'Ford Mustang Shelby GT500',
+    tagline: 'American muscle, legendary heritage',
+    img: 'assets/images/car-mustang.jpg',
+    price: 3749750, insurance: 14000,
+    specs: [
+      ['Make / Model','Ford Mustang Shelby GT500'],
+      ['Engine','5.2L Supercharged V8 (760 hp)'],
+      ['Torque','847 Nm'],
+      ['0–100 km/h','3.3 seconds'],
+      ['Top Speed','290 km/h'],
+      ['Drivetrain','Rear-Wheel Drive'],
+      ['Transmission','7-speed Dual-Clutch'],
+      ['Seating','4 passengers'],
+      ['Weight','1916 kg'],
+      ['Origin','Flat Rock, Michigan, USA']
+    ],
+    insurance_detail: { basic:14000, premium:23000, desc:'Performance muscle car coverage with track liability options.' },
+  },
+
+  BUGATTI: {
+    title: 'BUGATTI',
+    tagline: 'The super SUV reinvented',
+    img: 'assets/images/car-lambo.jpg',
+    price: 11474750, insurance: 39000,
+    specs: [
+      ['Make / Model','BUGATTI'],
+      ['Engine','4.0L Twin-Turbo V8 (666 hp)'],
+      ['Torque','850 Nm'],
+      ['0–100 km/h','3.5 seconds'],
+      ['Top Speed','304 km/h'],
+      ['Drivetrain','All-Wheel Drive'],
+      ['Transmission','8-speed Automatic'],
+      ['Seating','5 passengers'],
+      ['Cargo','617 L'],
+      ['Origin',"Sant'Agata Bolognese, Italy"]
+    ],
+    insurance_detail: { basic:39000, premium:62500, desc:'Exotic SUV coverage with worldwide protection and concierge.' },
+  },
+};
+
+  function getCarKey() {
+    return new URLSearchParams(location.search).get('car') || 'tesla';
+  }
+
+  function loadCar() {
+    const key = getCarKey();
+    const car = CARS[key] || CARS.tesla;
+
+    document.title = car.title + ' — NYH Motors';
+    document.getElementById('carTitle').textContent = car.title;
+    document.getElementById('carTagline').textContent = car.tagline;
+    document.getElementById('carHeroImg').src = car.img;
+    document.getElementById('carHeroImg').alt = car.title;
+    document.getElementById('carPrice').textContent = car.price.toLocaleString() + ' EGP';
+    document.getElementById('loanPrice').value = car.price;
+    document.getElementById('loanInsurance').value = car.insurance;
+
+    // Specs table
+    let html = '<table class="spec-table">';
+    car.specs.forEach(([k,v]) => { html += `<tr><td>${k}</td><td>${v}</td></tr>`; });
+    html += '</table>';
+    document.getElementById('specContent').innerHTML = html;
+
+    // Insurance
+    const ins = car.insurance_detail;
+    document.getElementById('insuranceContent').innerHTML = `
+      <p style="color:#888;margin-bottom:1.2rem;">${ins.desc}</p>
+      <div class="insurance-grid">
+        <div class="insurance-box">
+          <h4>Basic Coverage</h4>
+          <p style="color:#888;font-size:.85rem;">Liability &amp; collision protection</p>
+          <div class="ins-price">${ins.basic.toLocaleString()} EGP<span style="font-size:.8rem;color:#888;">/mo</span></div>
+        </div>
+        <div class="insurance-box featured">
+          <h4>Premium Coverage <span class="badge badge-new" style="margin-left:.4rem;">Recommended</span></h4>
+          <p style="color:#888;font-size:.85rem;">Full comprehensive + roadside assist</p>
+          <div class="ins-price">${ins.premium.toLocaleString()} EGP<span style="font-size:.8rem;color:#888;">/mo</span></div>
+        </div>
+      </div>`;
+
+    // Audio
+    const audioEl = document.getElementById('carAudio');
+    audioEl.src = SOUND_MAP.get(key);
+    audioEl.load();
+
+    // Store brochure info
+    window._brochureType = BROCHURE_MAP[key];
+  }
+
+  function calcLoan() {
+    const price = parseFloat(document.getElementById('loanPrice').value);
+    const insurance = parseFloat(document.getElementById('loanInsurance').value);
+    let months = parseInt(document.getElementById('loanMonths').value);
+    const rate = parseFloat(document.getElementById('loanRate').value) / 100 / 12;
+    if (months > 12) { months = 12; document.getElementById('loanMonths').value = 12; }
+    if (months < 1) { months = 1; document.getElementById('loanMonths').value = 1; }
+    const x = Math.pow(1 + rate, months);
+    const monthlyLoan = (price * x * rate) / (x - 1);
+    const total = monthlyLoan + insurance;
+    const el = document.getElementById('calcResult');
+    el.style.display = 'block';
+    el.innerHTML = `<div style="font-size:.82rem;opacity:.75;margin-bottom:.3rem;">Monthly Payment (${months} months)</div>
+      <div style="font-size:.9rem;">Loan: ${monthlyLoan.toFixed(2)} EGP + Insurance: ${insurance.toFixed(2)} EGP</div>
+      <div style="font-size:1.4rem;margin-top:.4rem;">Total: ${total.toFixed(2)} EGP<span style="font-size:.8rem;opacity:.7;">/mo</span></div>`;
+  }
+
+  function previewBrochure() {
+    const type = window._brochureType || 'kia';
+    const file = BROCHURE_FILES[type];
+    document.getElementById('brochureFrame').src = file;
+    document.getElementById('brochureTitle').innerHTML = `<i class="fa-solid fa-file-pdf" style="color:var(--accent-color);margin-right:.5rem;"></i> ${BROCHURE_LABELS[type]}`;
+    document.getElementById('brochureModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBrochure() {
+    document.getElementById('brochureModal').classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { document.getElementById('brochureFrame').src = ''; }, 350);
+  }
+
+  function downloadBrochure() {
+    const type = window._brochureType || 'kia';
+    const file = BROCHURE_FILES[type];
+    const a = document.createElement('a');
+    a.href = file;
+    a.download = BROCHURE_LABELS[type].replace(/ /g, '_') + '.pdf';
+    a.click();
+  }
+
+  document.getElementById('brochureModal').addEventListener('click', function(e) {
+    if (e.target === this) closeBrochure();
+  });
+
+  loadCar();
+  </script>
+</body>
+</html>

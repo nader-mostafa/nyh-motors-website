@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — NYH Motors</title>
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info h3 { margin-bottom: 1.5rem; }
+    .contact-info .info-item { display:flex; gap:1rem; margin-bottom:1.5rem; }
+    .contact-info .info-item i { color:var(--accent-color); font-size:1.2rem; margin-top:3px; flex-shrink:0; }
+    .contact-info .info-item p { margin:0; color:#666; font-size:0.93rem; }
+    .contact-info .info-item strong { display:block; color:var(--text-color); margin-bottom:0.2rem; }
+    @media(max-width:800px){ .contact-layout{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body class="layout-topbar">
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cars.html">Inventory</a></li>
+      <li><a href="compare.html">Compare</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="upcoming.html">Upcoming</a></li>
+      <li class="dropdown">
+        <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="dealerships.html">Dealerships</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="test-drive.html">Test Drive</a></li>
+        </ul>
+      </li>
+      <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+      <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+    </ul></nav>
+    <div class="controls-container">
+      <button id="layoutToggleBtn" class="toggle-btn" title="Switch Layout"><i class="fa-solid fa-table-columns"></i> <span class="lbl-topbar">Sidebar</span><span class="lbl-sidebar">Top Nav</span></button>
+      <button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </header>
+
+
+  <main class="animate-fade-in">
+    <h2 class="section-title">Contact &amp; Feedback</h2>
+    <p class="section-subtitle">We'd love to hear from you — complaints, compliments, or questions welcome.</p>
+
+   <div class="contact-layout mt-2">
+  <div class="contact-info">
+    <h3>Get In Touch</h3>
+
+    <div class="info-item">
+      <i class="fa-solid fa-phone"></i>
+      <div><strong>Phone</strong><p>+20 100 123 4567</p></div>
+    </div>
+
+    <div class="info-item">
+      <i class="fa-solid fa-envelope"></i>
+      <div><strong>Email</strong><p>support@nyhmotors.com</p></div>
+    </div>
+
+    <div class="info-item">
+      <i class="fa-solid fa-clock"></i>
+      <div><strong>Hours</strong><p>Sat–Thu: 10am–8pm EET<br>Fri: Closed</p></div>
+    </div>
+
+    <div class="info-item">
+      <i class="fa-solid fa-location-dot"></i>
+      <div><strong>Head Office</strong><p>Cairo, Egypt</p></div>
+    </div>
+
+  </div>
+</div>
+
+      <div class="form-container" style="max-width:100%;">
+        <h3 style="margin-bottom:1.5rem;">Send a Message</h3>
+        <form action="index.html" class="custom-validate" novalidate>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="Name" placeholder="Nouran Mohamed" required>
+            <span id="name-error" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="Email" placeholder="your@email.com" required>
+            <span id="email-error" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" rows="5" placeholder="Tell us how we can help.." required></textarea>
+            <span id="message-error" class="error-message"></span>
+          </div>
+          <button type="submit" class="btn" style="width:100%;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-inner"><div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div><div class="footer-col"><h4>Links</h4><a href="index.html">Home</a><a href="cars.html">Inventory</a></div><div class="footer-col"><h4>Contact</h4><a href="contact.html">contact@NYHmotors.com</a></div></div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+  <script src="js/main.js"></script>
+  <script src="js/validation.js"></script>
+</body>
+</html>

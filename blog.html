@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — NYH Motors</title>
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .blog-carousel-slide{min-width:100%;position:relative;border-radius:var(--radius);overflow:hidden;min-height:460px;}
+    .blog-carousel-slide img{width:100%;height:460px;object-fit:cover;display:block;}
+    .blog-slide-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.88));color:#fff;padding:3rem 3rem 2.5rem;}
+    .blog-slide-caption .tag{background:var(--accent-color);color:#fff;font-size:.72rem;font-weight:700;padding:.2rem .7rem;border-radius:999px;display:inline-block;margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.8px;}
+    .blog-slide-caption h3{font-size:1.7rem;color:#fff;margin-bottom:.5rem;}
+    .blog-slide-caption p{color:rgba(255,255,255,.8);margin:0 0 1rem;}
+  </style>
+</head>
+<body class="layout-topbar">
+
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cars.html">Inventory</a></li>
+        <li><a href="compare.html">Compare</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="upcoming.html">Upcoming</a></li>
+        <li class="dropdown">
+          <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="dealerships.html">Dealerships</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="test-drive.html">Test Drive</a></li>
+          </ul>
+        </li>
+        <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+        <li id="adminNavItem" style="display:none;"><a href="admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+        <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+      </ul>
+    </nav>
+    <div class="controls-container">
+      <button id="layoutToggleBtn" class="toggle-btn" title="Switch Layout"><i class="fa-solid fa-table-columns"></i> <span class="lbl-topbar">Sidebar</span><span class="lbl-sidebar">Top Nav</span></button>
+      <button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </header>
+
+
+
+  <main class="animate-fade-in">
+    <div class="section-eyebrow">News &amp; Guides</div>
+    <h2 class="section-title">Articles &amp; Blog</h2>
+    <p class="section-subtitle">Latest news, reviews and guides from the NYH Motors team</p>
+
+    <!-- Carousel -->
+    <div class="carousel-wrapper" style="margin-bottom:1rem;">
+      <div class="carousel-track">
+        <div class="blog-carousel-slide carousel-slide">
+          <img src="assets/images/blog-slide1.jpg" onerror="this.src='assets/images/default.jpg'" alt="Electric Cars Future">
+          <div class="blog-slide-caption">
+            <span class="tag">Electric Vehicles</span>
+            <h3>The Future of Electric Sports Cars</h3>
+            <p>How the next generation of EVs is redefining performance, range and sustainability.</p>
+            <a href="article-ev-future.html" class="btn">Read Article</a>
+          </div>
+        </div>
+        <div class="blog-carousel-slide carousel-slide">
+          <img src="assets/images/blog-slide2.jpg" onerror="this.src='assets/images/default.jpg'" alt="Car Maintenance">
+          <div class="blog-slide-caption">
+            <span class="tag">Maintenance</span>
+            <h3>Top 10 Maintenance Tips for Supercars</h3>
+            <p>Keep your high-performance machine running perfectly with expert advice.</p>
+            <a href="article-maintenance.html" class="btn">Read Article</a>
+          </div>
+        </div>
+        <div class="blog-carousel-slide carousel-slide">
+          <img src="assets/images/blog-slide3.jpg" onerror="this.src='assets/images/default.jpg'" alt="Luxury Cars Guide">
+          <div class="blog-slide-caption">
+            <span class="tag">Buying Guide</span>
+            <h3>How to Choose Your Perfect Luxury Vehicle</h3>
+            <p>A comprehensive guide to selecting a luxury or performance vehicle that fits your lifestyle.</p>
+            <a href="article-buying-guide.html" class="btn">Read Article</a>
+          </div>
+        </div>
+        <div class="blog-carousel-slide carousel-slide">
+          <img src="assets/images/blog-slide4.jpg" onerror="this.src='assets/images/default.jpg'" alt="Track Days">
+          <div class="blog-slide-caption">
+            <span class="tag">Lifestyle</span>
+            <h3>Track Day Essentials: What You Need to Know</h3>
+            <p>Everything first-timers should know before taking their car to the circuit.</p>
+            <a href="article-track-day.html" class="btn">Read Article</a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn prev">&#8249;</button>
+      <button class="carousel-btn next">&#8250;</button>
+      <div class="carousel-dots"></div>
+    </div>
+
+    <!-- Blog Grid -->
+    <h3 style="margin-top:3rem;margin-bottom:.5rem;">More Articles</h3>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="assets/images/article-ev.jpg" onerror="this.src='assets/images/default.jpg'" alt="EV Charging">
+        <div class="blog-card-body">
+          <span class="tag">EV Guide</span>
+          <h4>Understanding EV Charging Levels</h4>
+          <p>Level 1, Level 2, DC Fast Charging — what's the difference and which do you need?</p>
+          <a href="article-ev-future.html" class="custom-link">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="assets/images/article-buying.jpg" onerror="this.src='assets/images/default.jpg'" alt="Interior">
+        <div class="blog-card-body">
+          <span class="tag">Features</span>
+          <h4>Best Luxury Car Interiors of 2026</h4>
+          <p>Which automaker delivers the most sumptuous cabin experience this year?</p>
+          <a href="article-buying-guide.html" class="custom-link">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="assets/images/article-maintenance.jpg" onerror="this.src='assets/images/default.jpg'" alt="Insurance">
+        <div class="blog-card-body">
+          <span class="tag">Insurance</span>
+          <h4>How to Choose the Right Car Insurance</h4>
+          <p>A practical guide to understanding coverage types for luxury and performance vehicles.</p>
+          <a href="article-maintenance.html" class="custom-link">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="assets/images/article-track.jpg" onerror="this.src='assets/images/default.jpg'" alt="Track">
+        <div class="blog-card-body">
+          <span class="tag">Performance</span>
+          <h4>Track Day Essentials for Beginners</h4>
+          <p>What to bring, how to prepare, and how to stay safe on your first track day.</p>
+          <a href="article-track-day.html" class="custom-link">Read Article →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div>
+      <div class="footer-col"><h4>Links</h4><a href="index.html">Home</a><a href="cars.html">Inventory</a><a href="compare.html">Compare</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">contact@NYHmotors.com</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

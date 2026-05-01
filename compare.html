@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Models — NYH Motors</title>
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .compare-selectors{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem;}
+    .car-selector-box{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow);}
+    .car-selector-box h3{margin-bottom:1rem;font-size:1rem;color:#888;text-transform:uppercase;letter-spacing:.8px;}
+    .search-results-dropdown{position:absolute;width:100%;background:var(--nav-bg);border:1px solid var(--border-color);border-radius:10px;box-shadow:var(--shadow-hover);z-index:100;top:calc(100% + 4px);left:0;max-height:240px;overflow-y:auto;}
+    .search-results-dropdown li{list-style:none;padding:.8rem 1rem;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:.8rem;}
+    .search-results-dropdown li:hover{background:var(--secondary-color);}
+    .search-results-dropdown img{width:52px;height:36px;object-fit:cover;border-radius:6px;}
+    .selector-wrap{position:relative;}
+    .selected-car-preview{margin-top:1rem;}
+    .selected-car-preview img{width:100%;height:180px;object-fit:cover;border-radius:var(--radius);}
+    .selected-car-preview p{margin-top:.6rem;font-weight:600;text-align:center;}
+    .compare-table-wrap{overflow-x:auto;margin-top:2rem;}
+    .compare-btn-area{text-align:center;margin:2rem 0;}
+    @media(max-width:700px){.compare-selectors{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body class="layout-topbar">
+
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cars.html">Inventory</a></li>
+        <li><a href="compare.html" class="active">Compare</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="upcoming.html">Upcoming</a></li>
+        <li class="dropdown">
+          <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="dealerships.html">Dealerships</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="test-drive.html">Test Drive</a></li>
+          </ul>
+        </li>
+        <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+        <li id="adminNavItem" style="display:none;"><a href="admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+        <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+      </ul>
+    </nav>
+    <div class="controls-container">
+      <button id="layoutToggleBtn" class="toggle-btn" title="Switch Layout"><i class="fa-solid fa-table-columns"></i> <span class="lbl-topbar">Sidebar</span><span class="lbl-sidebar">Top Nav</span></button>
+      <button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </header>
+
+
+
+  <main class="animate-fade-in">
+    <div class="section-eyebrow">Side by Side</div>
+    <h2 class="section-title">Compare Models</h2>
+    <p class="section-subtitle">Search and compare specifications side-by-side</p>
+
+    <div class="compare-selectors">
+      <div class="car-selector-box">
+        <h3><i class="fa-solid fa-1"></i> Vehicle One</h3>
+        <div class="selector-wrap">
+          <input type="text" id="search1" class="search-box" placeholder="Search a car..." style="width:100%;" autocomplete="off">
+          <ul class="search-results-dropdown" id="dropdown1" style="display:none;"></ul>
+        </div>
+        <div class="selected-car-preview" id="preview1">
+          <img src="assets/images/car-tesla.jpg" onerror="this.src='assets/images/default.jpg'" alt="Car 1" id="previewImg1">
+          <p id="previewName1">2026 Tesla Model S Plaid</p>
+        </div>
+      </div>
+      <div class="car-selector-box">
+        <h3><i class="fa-solid fa-2"></i> Vehicle Two</h3>
+        <div class="selector-wrap">
+          <input type="text" id="search2" class="search-box" placeholder="Search a car..." style="width:100%;" autocomplete="off">
+          <ul class="search-results-dropdown" id="dropdown2" style="display:none;"></ul>
+        </div>
+        <div class="selected-car-preview" id="preview2">
+          <img src="assets/images/car-porsche.jpg" onerror="this.src='assets/images/default.jpg'" alt="Car 2" id="previewImg2">
+          <p id="previewName2">BMW</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare-btn-area">
+      <button class="btn btn-lg" onclick="buildTable()" style="padding:1rem 3rem;font-size:1.05rem;letter-spacing:.5px;">
+        <i class="fa-solid fa-scale-balanced"></i> Compare Now
+      </button>
+    </div>
+
+    <div class="compare-table-wrap" id="compareTableWrap" style="display:none;">
+      <table class="compare-table" id="compareTable"></table>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div>
+      <div class="footer-col"><h4>Links</h4><a href="index.html">Home</a><a href="cars.html">Inventory</a><a href="blog.html">Blog</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">contact@NYHmotors.com</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+const CARS = {
+  tesla: {
+    name:'2026 Tesla Model S Plaid',
+    img:'assets/images/car-tesla.jpg',
+    specs:{
+      Engine:'Tri-Motor Electric (1,020 hp)',
+      Torque:'1424 Nm',
+      '0-100 Km/h':'1.99s',
+      'Top Speed':'322 km/h',
+      Range:'637 km',
+      Drivetrain:'All-Wheel Drive',
+      Seating:'5',
+      Price:'4,499,500 EGP',
+      Insurance:'16,000 EGP/mo'
+    }
+  },
+
+  BMW: {
+    name:'BMW',
+    img:'assets/images/car-porsche.jpg',
+    specs:{
+      Engine:'Dual-Motor Electric (750 hp)',
+      Torque:'1049 Nm',
+      '0-100 Km/h':'2.6s',
+      'Top Speed':'259 km/h',
+      Range:'365 km',
+      Drivetrain:'All-Wheel Drive',
+      Seating:'4',
+      Price:'5,190,000 EGP',
+      Insurance:'19,500 EGP/mo'
+    }
+  },
+
+  ferrari: {
+    name:'Ferrari F8 Tributo',
+    img:'assets/images/car-ferrari.jpg',
+    specs:{
+      Engine:'3.9L Twin-Turbo V8 (710 hp)',
+      Torque:'770 Nm',
+      '0-100 Km/h':'2.9s',
+      'Top Speed':'340 km/h',
+      Range:'N/A',
+      Drivetrain:'Rear-Wheel Drive',
+      Seating:'2',
+      Price:'13,800,000 EGP',
+      Insurance:'42,500 EGP/mo'
+    }
+  },
+
+  bmw: {
+    name:'2026 BMW X5 M Competition',
+    img:'assets/images/car-bmw.jpg',
+    specs:{
+      Engine:'4.4L Twin-Turbo V8 (617 hp)',
+      Torque:'750 Nm',
+      '0-100 Km/h':'3.8s',
+      'Top Speed':'285 km/h',
+      Range:'N/A',
+      Drivetrain:'xDrive AWD',
+      Seating:'5',
+      Price:'5,705,000 EGP',
+      Insurance:'21,000 EGP/mo'
+    }
+  },
+
+  mustang: {
+    name:'Ford Mustang Shelby GT500',
+    img:'assets/images/car-mustang.jpg',
+    specs:{
+      Engine:'5.2L Supercharged V8 (760 hp)',
+      Torque:'847 Nm',
+      '0-100 Km/h':'3.3s',
+      'Top Speed':'290 km/h',
+      Range:'N/A',
+      Drivetrain:'Rear-Wheel Drive',
+      Seating:'4',
+      Price:'3,749,750 EGP',
+      Insurance:'14,000 EGP/mo'
+    }
+  },
+
+  BUGATTI: {
+    name:'BUGATTI',
+    img:'assets/images/car-lambo.jpg',
+    specs:{
+      Engine:'4.0L Twin-Turbo V8 (666 hp)',
+      Torque:'850 Nm',
+      '0-100 Km/h':'3.5s',
+      'Top Speed':'304 km/h',
+      Range:'N/A',
+      Drivetrain:'All-Wheel Drive',
+      Seating:'5',
+      Price:'11,474,750 EGP',
+      Insurance:'39,000 EGP/mo'
+    }
+  },
+};
+    let selected = {1:'tesla',2:'BMW'};
+    function setupSearch(num) {
+      const input = document.getElementById('search'+num);
+      const dropdown = document.getElementById('dropdown'+num);
+      input.addEventListener('input', () => {
+        const term = input.value.toLowerCase();
+        if (!term) { dropdown.style.display='none'; return; }
+        const matches = Object.entries(CARS).filter(([k,v]) => v.name.toLowerCase().includes(term));
+        if (!matches.length) { dropdown.style.display='none'; return; }
+        dropdown.innerHTML='';
+        matches.forEach(([key,car]) => {
+          const li = document.createElement('li');
+          li.innerHTML=`<img src="${car.img}" alt="${car.name}"><span>${car.name}</span>`;
+          li.addEventListener('click', () => {
+            selected[num]=key; input.value=car.name; dropdown.style.display='none';
+            document.getElementById('previewImg'+num).src=car.img;
+            document.getElementById('previewName'+num).textContent=car.name;
+          });
+          dropdown.appendChild(li);
+        });
+        dropdown.style.display='block';
+      });
+      document.addEventListener('click', e => { if (!input.contains(e.target)&&!dropdown.contains(e.target)) dropdown.style.display='none'; });
+    }
+    function buildTable() {
+      const c1=CARS[selected[1]], c2=CARS[selected[2]];
+      const keys=Object.keys({...c1.specs,...c2.specs});
+      let html=`<thead><tr><th>Specification</th><th>${c1.name}</th><th>${c2.name}</th></tr></thead><tbody>`;
+      html+=`<tr><td>Photo</td><td><img src="${c1.img}" style="width:100%;max-width:200px;border-radius:8px;" alt="${c1.name}"></td><td><img src="${c2.img}" style="width:100%;max-width:200px;border-radius:8px;" alt="${c2.name}"></td></tr>`;
+      keys.forEach(k => { html+=`<tr><td>${k}</td><td>${c1.specs[k]||'—'}</td><td>${c2.specs[k]||'—'}</td></tr>`; });
+      html+='</tbody>';
+      document.getElementById('compareTable').innerHTML=html;
+      const wrap=document.getElementById('compareTableWrap');
+      wrap.style.display='block';
+      wrap.scrollIntoView({behavior:'smooth'});
+    }
+    setupSearch(1); setupSearch(2);
+  </script>
+</body>
+</html>

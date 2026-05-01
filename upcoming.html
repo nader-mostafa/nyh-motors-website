@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upcoming 2027 Models — NYH Motors</title>
+  <link rel="stylesheet" href="css/themes.css"><link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .upcoming-img-wrap{overflow:hidden;height:260px;}
+    .upcoming-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+    .upcoming-card:hover .upcoming-img-wrap img{transform:scale(1.06);}
+    .upcoming-card-body{padding:1.8rem;}
+    .coming-btn{background:#888;cursor:not-allowed;color:#fff;border:none;padding:.7rem 1.4rem;border-radius:10px;font-weight:600;font-family:var(--font-body);font-size:.9rem;}
+    .eta-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--secondary-color);border:1px solid var(--border-color);border-radius:999px;padding:.3rem .9rem;font-size:.82rem;color:#888;margin-bottom:1rem;}
+  </style>
+</head>
+<body class="layout-topbar">
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav"><ul>
+      <li><a href="index.html">Home</a></li><li><a href="cars.html">Inventory</a></li>
+      <li><a href="compare.html">Compare</a></li><li><a href="blog.html">Blog</a></li>
+      <li><a href="upcoming.html" class="active">Upcoming</a></li>
+      <li class="dropdown">
+        <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="dealerships.html">Dealerships</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </li>
+      <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+      <li id="adminNavItem" style="display:none;"><a href="admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+      <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+    </ul></nav>
+    <div class="controls-container">
+      <button id="layoutToggleBtn" class="toggle-btn" title="Switch Layout"><i class="fa-solid fa-table-columns"></i> <span class="lbl-topbar">Sidebar</span><span class="lbl-sidebar">Top Nav</span></button>
+      <button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </header>
+
+
+
+  <main class="animate-fade-in">
+    <div class="section-eyebrow">2027 Preview</div>
+    <h2 class="section-title">Upcoming Models</h2>
+    <p class="section-subtitle">Sneak peek at what's arriving next year — register your interest today</p>
+
+    <div class="upcoming-grid">
+      <div class="upcoming-card">
+        <div class="upcoming-img-wrap">
+          <img src="assets/images/upcoming-audi.jpg" onerror="this.src='assets/images/default.jpg'" alt="Audi e-tron GT Concept">
+        </div>
+        <div class="upcoming-card-body">
+          <div class="eta-badge"><i class="fa-regular fa-calendar"></i> Expected: Spring 2027</div>
+          <h3>Audi e-tron GT Concept</h3>
+          <p>The next evolution of Audi's all-electric gran turismo, featuring ultra-fast 350 kW charging and a projected range of over 450 miles. A refined cabin with augmented reality HUD sets a new benchmark for luxury EVs.</p>
+          <button class="coming-btn" disabled><i class="fa-solid fa-bell"></i> Coming Soon</button>
+        </div>
+      </div>
+      <div class="upcoming-card">
+        <div class="upcoming-img-wrap">
+          <img src="assets/images/upcoming-mercedes.jpg" onerror="this.src='assets/images/default.jpg'" alt="Mercedes EQS AMG Black">
+        </div>
+        <div class="upcoming-card-body">
+          <div class="eta-badge"><i class="fa-regular fa-calendar"></i> Expected: Summer 2027</div>
+          <h3>Mercedes EQS AMG Black Series</h3>
+          <p>The most powerful AMG electric vehicle ever made, with an estimated 1,200 hp. A bespoke aerodynamics package developed on the Nürburgring and a 0–100 Km/h time of under 2 seconds make this a landmark machine.</p>
+          <button class="coming-btn" disabled><i class="fa-solid fa-bell"></i> Coming Soon</button>
+        </div>
+      </div>
+      <div class="upcoming-card">
+        <div class="upcoming-img-wrap">
+          <img src="assets/images/upcoming-bmw.jpg" onerror="this.src='assets/images/default.jpg'" alt="BMW M Vision Concept">
+        </div>
+        <div class="upcoming-card-body">
+          <div class="eta-badge"><i class="fa-regular fa-calendar"></i> Expected: Autumn 2027</div>
+          <h3>BMW M Vision Concept</h3>
+          <p>A plug-in hybrid supercar combining a twin-turbo inline-6 with two electric motors for a combined output of 900 hp. Near-instantaneous torque delivery and BMW's latest xDrive system promise a driving experience unlike any other.</p>
+          <button class="coming-btn" disabled><i class="fa-solid fa-bell"></i> Coming Soon</button>
+        </div>
+      </div>
+      <div class="upcoming-card">
+        <div class="upcoming-img-wrap">
+          <img src="assets/images/upcoming-rolls.jpg" onerror="this.src='assets/images/default.jpg'" alt="Rolls-Royce Spectre II">
+        </div>
+        <div class="upcoming-card-body">
+          <div class="eta-badge"><i class="fa-regular fa-calendar"></i> Expected: Winter 2027</div>
+          <h3>Rolls-Royce Spectre II</h3>
+          <p>The second-generation all-electric Rolls-Royce Spectre promises greater range, a whisper-quiet cabin of unparalleled refinement, and an expanded bespoke customisation programme — each car a singular work of art.</p>
+          <button class="coming-btn" disabled><i class="fa-solid fa-bell"></i> Coming Soon</button>
+        </div>
+      </div>
+      <div class="upcoming-card">
+        <div class="upcoming-img-wrap">
+          <img src="assets/images/upcoming-ferrari.jpg" onerror="this.src='assets/images/default.jpg'" alt="Ferrari SF90 XX Spider">
+        </div>
+        <div class="upcoming-card-body">
+          <div class="eta-badge"><i class="fa-regular fa-calendar"></i> Expected: Spring 2027</div>
+          <h3>Ferrari SF90 XX Spider 2027</h3>
+          <p>Ferrari's most extreme open-top production car ever, with 1,030 hp from a hybrid V8 system. Track-focused aerodynamics generate 630 kg of downforce at 250 km/h, with a retractable hardtop for open-air exhilaration.</p>
+          <button class="coming-btn" disabled><i class="fa-solid fa-bell"></i> Coming Soon</button>
+        </div>
+      </div>
+      <div class="upcoming-card">
+        <div class="upcoming-img-wrap">
+          <img src="assets/images/upcoming-porsche.jpg" onerror="this.src='assets/images/default.jpg'" alt="Porsche 911 Hybrid">
+        </div>
+        <div class="upcoming-card-body">
+          <div class="eta-badge"><i class="fa-regular fa-calendar"></i> Expected: Summer 2027</div>
+          <h3>Porsche 911 GT3 Hybrid</h3>
+          <p>The legendary naturally-aspirated flat-six meets electrification for the first time. The 2027 GT3 Hybrid uses a front-axle electric motor for additional performance while retaining the iconic analogue character that makes the GT3 a driver's benchmark.</p>
+          <button class="coming-btn" disabled><i class="fa-solid fa-bell"></i> Coming Soon</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div>
+      <div class="footer-col"><h4>Links</h4><a href="index.html">Home</a><a href="cars.html">Inventory</a><a href="blog.html">Blog</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html">contact@NYHmotors.com</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

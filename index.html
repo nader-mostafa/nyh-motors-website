@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYH Motors — Drive Your Dream</title>
+  <meta name="description" content="NYH Motors — premium car dealership offering luxury, performance and electric vehicles.">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-color);border:1px solid var(--border-color);border-radius:var(--radius);overflow:hidden;margin-bottom:3rem;}
+    .stat-item{background:var(--card-bg);padding:1.8rem 1rem;text-align:center;}
+    .stat-item .num{font-size:2.2rem;font-weight:700;color:var(--accent-color);font-family:var(--font-display);}
+    .stat-item .lbl{font-size:.82rem;color:#888;margin-top:.2rem;text-transform:uppercase;letter-spacing:.8px;}
+    .explore-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;}
+    .explore-chip{display:flex;align-items:center;gap:.6rem;padding:.7rem 1.3rem;background:var(--card-bg);border:1px solid var(--border-color);border-radius:999px;text-decoration:none;color:var(--text-color);font-size:.9rem;font-weight:500;transition:all .25s;}
+    .explore-chip:hover{background:var(--accent-color);color:#fff;border-color:var(--accent-color);}
+    @media(max-width:700px){.stats-bar{grid-template-columns:1fr 1fr;}}
+  </style>
+</head>
+<body class="layout-topbar">
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="cars.html">Inventory</a></li>
+        <li><a href="compare.html">Compare</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="upcoming.html">Upcoming</a></li>
+        <li class="dropdown">
+          <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="dealerships.html">Dealerships</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="test-drive.html">Test Drive</a></li>
+          </ul>
+        </li>
+        <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+        <li id="adminNavItem" style="display:none;"><a href="admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+        <li><a href="login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+      </ul>
+    </nav>
+    <div class="controls-container">
+      <button id="layoutToggleBtn" class="toggle-btn" title="Switch Layout"><i class="fa-solid fa-table-columns"></i> <span class="lbl-topbar">Sidebar</span><span class="lbl-sidebar">Top Nav</span></button>
+      <button id="themeToggleBtn" class="toggle-btn"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </header>
+
+
+
+  <main class="animate-fade-in">
+    <section class="hero">
+      <img class="hero-img" src="assets/images/hero.jpg" onerror="this.src='assets/images/default.jpg'" alt="Luxury Car">
+      <div class="hero-content">
+        <span class="hero-badge"><i class="fa-solid fa-star"></i> &nbsp;Premium Dealership</span>
+        <h2>Drive the Extraordinary</h2>
+        <p>NYH Motors — where performance meets elegance. Explore our handpicked fleet of the world's finest vehicles.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="cars.html" class="btn btn-lg">View Inventory</a>
+          <a href="test-drive.html" class="btn-ghost btn btn-lg">Book Test Drive</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-bar">
+      <div class="stat-item"><div class="num">320+</div><div class="lbl">Vehicles in Stock</div></div>
+      <div class="stat-item"><div class="num">18</div><div class="lbl">Showrooms</div></div>
+      <div class="stat-item"><div class="num">4.9★</div><div class="lbl">Customer Rating</div></div>
+      <div class="stat-item"><div class="num">12K+</div><div class="lbl">Happy Clients</div></div>
+    </div>
+
+    <div class="section-eyebrow">Curated Collection</div>
+    <h2 class="section-title">Featured Vehicles</h2>
+    <p class="section-subtitle">Four categories. One standard of excellence.</p>
+
+    <div class="bento-grid">
+      <a href="cars.html" class="bento-card" style="text-decoration:none;">
+        <img src="assets/images/bento-power.jpg" onerror="this.src='assets/images/default.jpg'" alt="Power">
+        <div class="bento-overlay">
+          <span class="bento-tag">Category</span>
+          <h3>Power</h3>
+          <p>Raw force, engineered to perfection — feel every heartbeat of the road.</p>
+        </div>
+      </a>
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <a href="cars.html" class="bento-card" style="text-decoration:none;min-height:200px;">
+          <img src="assets/images/bento-luxury.jpg" onerror="this.src='assets/images/default.jpg'" alt="Luxury">
+          <div class="bento-overlay">
+            <span class="bento-tag">Category</span>
+            <h3>Luxury</h3>
+            <p>Opulence and craftsmanship in every detail.</p>
+          </div>
+        </a>
+        <a href="cars.html" class="bento-card" style="text-decoration:none;min-height:200px;">
+          <img src="assets/images/bento-speed.jpg" onerror="this.src='assets/images/default.jpg'" alt="Speed">
+          <div class="bento-overlay">
+            <span class="bento-tag">Category</span>
+            <h3>Speed</h3>
+            <p>Zero to extraordinary in the blink of an eye.</p>
+          </div>
+        </a>
+        <a href="cars.html" class="bento-card" style="text-decoration:none;min-height:200px;">
+          <img src="assets/images/bento-electric.jpg" onerror="this.src='assets/images/default.jpg'" alt="Electric">
+          <div class="bento-overlay">
+            <span class="bento-tag">Category</span>
+            <h3>Electric</h3>
+            <p>The future of driving, available today.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <section class="mt-2">
+      <h2 class="section-title">Explore NYH Motors</h2>
+      <div class="explore-row">
+        <a href="compare.html" class="explore-chip"><i class="fa-solid fa-scale-balanced"></i> Compare Cars</a>
+        <a href="test-drive.html" class="explore-chip"><i class="fa-solid fa-road"></i> Book Test Drive</a>
+        <a href="blog.html" class="explore-chip"><i class="fa-solid fa-newspaper"></i> Auto Blog</a>
+        <a href="upcoming.html" class="explore-chip"><i class="fa-solid fa-calendar"></i> Upcoming Models</a>
+        <a href="dealerships.html" class="explore-chip"><i class="fa-solid fa-location-dot"></i> Find Dealership</a>
+      </div>
+    </section>
+
+    <section class="mt-3">
+      <div class="section-eyebrow">Reviews</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-subtitle">Real experiences from NYH Motors customers worldwide</p>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <blockquote>Incredible service! Bought a Porsche Taycan and the process was seamless from test drive to handover. NYH Motors is in a class of its own.</blockquote>
+          <cite>— NADER</cite>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <blockquote>Outstanding selection of supercars. The comparison tool on the website made choosing between models effortless. Highly recommend.</blockquote>
+          <cite>— IBRAHIM</cite>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <blockquote>Found my dream Ferrari here. The staff was professional, the brochure system was premium, and the entire purchase was flawless. 10/10!</blockquote>
+          <cite>— PORRIE</cite>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col"><h4><img src="../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium car dealership delivering world-class vehicles and an unmatched buying experience since 2010.</p></div>
+      <div class="footer-col"><h4>Quick Links</h4><a href="cars.html">Browse Inventory</a><a href="compare.html">Compare Models</a><a href="upcoming.html">Upcoming 2027</a><a href="blog.html">Blog</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="contact.html"><i class="fa-solid fa-envelope"></i> contact@nyhmotors.com</a><a href="tel:+2001270866789"><i class="fa-solid fa-phone"></i> +20 012 708 66789</a><a href="dealerships.html"><i class="fa-solid fa-location-dot"></i> Find a Showroom</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
