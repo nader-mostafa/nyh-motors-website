@@ -1,0 +1,11 @@
+﻿/* Custom styles for dealerships */
+
+
+    .dealer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .dealer-card { background:var(--card-bg); border:1px solid var(--border-color); border-radius:var(--radius); padding:2rem; box-shadow:var(--shadow); }
+    .dealer-card h3 { font-size:1.15rem; margin-bottom:0.8rem; }
+    .dealer-card p { color:#777; font-size:0.9rem; margin-bottom:0.4rem; }
+    .dealer-card .info-row { display:flex; gap:0.6rem; align-items:flex-start; margin-bottom:0.5rem; }
+    .dealer-card .info-row i { color:var(--primary-color); margin-top:3px; width:16px; flex-shrink:0; }
+  
+

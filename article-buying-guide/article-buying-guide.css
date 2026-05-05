@@ -1,0 +1,12 @@
+﻿/* Custom styles for article-buying-guide */
+
+
+    .article-hero{width:100%;height:420px;object-fit:cover;border-radius:var(--radius);margin-bottom:2rem;}
+    .article-body{max-width:800px;margin:0 auto;}
+    .article-meta{display:flex;align-items:center;gap:1rem;color:#888;font-size:.88rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+    .article-body h3{margin-top:2rem;margin-bottom:.8rem;}
+    .article-body p{line-height:1.85;}
+    .article-body ul{margin:.8rem 0 1.2rem 1.5rem;line-height:1.9;}
+    .highlight-box{background:var(--secondary-color);border-left:4px solid var(--accent-color);border-radius:8px;padding:1.2rem 1.5rem;margin:2rem 0;}
+  
+

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Models — NYH Motors</title>
+  <link rel="stylesheet" href="../css/themes.css?v=2">
+  <link rel="stylesheet" href="../css/main.css?v=2">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+
+  <link rel="stylesheet" href="compare.css?v=2">
+</head>
+<body class="layout-topbar">
+
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../../LOGO.png" alt="NYH Motors Logo" style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors</h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../index/index.html">Home</a></li>
+        <li><a href="../cars/cars.html">Inventory</a></li>
+        <li><a href="../compare/compare.html" class="active">Compare</a></li>
+        <li><a href="../blog/blog.html">Blog</a></li>
+        <li><a href="../upcoming/upcoming.html">Upcoming</a></li>
+        <li class="dropdown">
+          <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="../brochures/brochures.html">Brochures</a></li>
+            <li><a href="../dealerships/dealerships.html">Dealerships</a></li>
+            <li><a href="../faq/faq.html">FAQ</a></li>
+            <li><a href="../contact/contact.html">Contact</a></li>
+            <li><a href="../test-drive/test-drive.html">Test Drive</a></li>
+          </ul>
+        </li>
+        <li><a href="../dashboard/dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+        <li id="adminNavItem" style="display:none;"><a href="../admin/admin.html"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+        <li><a href="../login/login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+      </ul>
+    </nav>
+    <div class="controls-container">
+      <button id="layoutToggleBtn" class="toggle-btn" title="Switch Layout"><i class="fa-solid fa-table-columns"></i> <span class="lbl-topbar">Sidebar</span><span class="lbl-sidebar">Top Nav</span></button>
+      <select id="themeSelect" class="theme-select">
+          <option value="dark-blue">Dark Blue</option>
+          <option value="purple">Purple</option>
+          <option value="emerald">Emerald</option>
+          <option value="light">Light</option>
+        </select>
+    </div>
+  </header>
+
+
+
+  <main class="animate-fade-in">
+    <div class="section-eyebrow">Side by Side</div>
+    <h2 class="section-title">Compare Models</h2>
+    <p class="section-subtitle">Search and compare specifications side-by-side</p>
+
+    <div class="compare-selectors">
+      <div class="car-selector-box">
+        <h3><i class="fa-solid fa-1"></i> Vehicle One</h3>
+        <div class="selector-wrap">
+          <input type="text" id="search1" class="search-box" placeholder="Search a car..." style="width:100%;" autocomplete="off">
+          <ul class="search-results-dropdown" id="dropdown1" style="display:none;"></ul>
+        </div>
+        <div class="selected-car-preview" id="preview1">
+          <img src="../assets/images/car-tesla.jpg" onerror="this.src='../assets/images/default.jpg'" alt="Car 1" id="previewImg1">
+          <p id="previewName1">2026 Tesla Model S Plaid</p>
+        </div>
+      </div>
+      <div class="car-selector-box">
+        <h3><i class="fa-solid fa-2"></i> Vehicle Two</h3>
+        <div class="selector-wrap">
+          <input type="text" id="search2" class="search-box" placeholder="Search a car..." style="width:100%;" autocomplete="off">
+          <ul class="search-results-dropdown" id="dropdown2" style="display:none;"></ul>
+        </div>
+        <div class="selected-car-preview" id="preview2">
+          <img src="../assets/images/car-porsche.jpg" onerror="this.src='../assets/images/default.jpg'" alt="Car 2" id="previewImg2">
+          <p id="previewName2">BMW</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare-btn-area">
+      <button class="btn btn-lg" onclick="buildTable()" style="padding:1rem 3rem;font-size:1.05rem;letter-spacing:.5px;">
+        <i class="fa-solid fa-scale-balanced"></i> Compare Now
+      </button>
+    </div>
+
+    <div class="compare-table-wrap" id="compareTableWrap" style="display:none;">
+      <table class="compare-table" id="compareTable"></table>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col"><h4><img src="../../LOGO.png" alt="NYH Motors Logo" style="height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;"> NYH Motors</h4><p>Premium vehicles, world-class service.</p></div>
+      <div class="footer-col"><h4>Links</h4><a href="../index/index.html">Home</a><a href="../cars/cars.html">Inventory</a><a href="../blog/blog.html">Blog</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="../contact/contact.html">contact@NYHmotors.com</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+
+  <script src="../js/main.js?v=2"></script>
+  
+
+  <script src="compare.js?v=2"></script>
+</body>
+</html>
+
+
+
+
+
+
+

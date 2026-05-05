@@ -1,0 +1,14 @@
+﻿/* Custom styles for test-drive */
+
+
+    .test-drive-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 2rem; }
+    .test-drive-info img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); height: 340px; object-fit: cover; margin-bottom: 2rem; }
+    .test-drive-info ul { list-style: none; padding: 0; }
+    .test-drive-info ul li { padding: 0.7rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 0.8rem; color: #666; font-size: 0.95rem; }
+    .test-drive-info ul li i { color: var(--primary-color); width: 18px; }
+    .big-form { max-width: 100%; }
+    .big-form .form-group input, .big-form .form-group select, .big-form .form-group textarea { font-size: 1rem; padding: 1rem 1.1rem; }
+    .big-form .form-group label { font-size: 1rem; margin-bottom: 0.6rem; }
+    @media(max-width:800px){ .test-drive-layout{grid-template-columns:1fr;} }
+  
+

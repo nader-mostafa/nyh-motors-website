@@ -1,0 +1,46 @@
+﻿/* Custom styles for faq */
+
+
+    /* FAQ accordion - no layout shift, uses max-height transition only inside a min-height container */
+    .faq-wrapper { max-width: 780px; margin: 0 auto; }
+    .faq-item { margin-bottom: 1rem; border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; }
+    .faq-header {
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--secondary-color);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      transition: background 0.2s;
+      user-select: none;
+    }
+    .faq-header:hover { background: var(--border-color); }
+    .faq-icon { font-size: 0.85rem; transition: transform 0.35s ease; flex-shrink: 0; margin-left: 1rem; }
+    .faq-header.open .faq-icon { transform: rotate(180deg); }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+      background: var(--card-bg);
+    }
+    .faq-body.open { max-height: 400px; }
+    .faq-body-inner { padding: 1.2rem 1.5rem; }
+    /* Page height is NOT affected because we're using max-height, no reflow of surrounding elements */
+  
+
+
+/* === ENHANCED FAQ LINKS === */
+.faq-body-inner .custom-link {
+  color: var(--accent-color, #e53935) !important;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.faq-body-inner .custom-link:hover {
+  opacity: 0.7;
+}

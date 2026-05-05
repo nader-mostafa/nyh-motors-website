@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brochures — NYH Motors</title>
+  <link rel="stylesheet" href="../css/themes.css?v=2">
+  <link rel="stylesheet" href="../css/main.css?v=2">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="brochures.css?v=2">
+</head>
+
+<body class="layout-topbar">
+
+  <header class="main-header">
+    <div class="logo-container">
+      <h1><img src="../../LOGO.png" alt="NYH Motors Logo"
+          style="height: 40px; border-radius: 50%; vertical-align: middle; margin-right: 8px;"> <span>NYH</span> Motors
+      </h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../index/index.html">Home</a></li>
+        <li><a href="../cars/cars.html">Inventory</a></li>
+        <li><a href="../compare/compare.html">Compare</a></li>
+        <li><a href="../blog/blog.html">Blog</a></li>
+        <li><a href="../upcoming/upcoming.html">Upcoming</a></li>
+        <li class="dropdown">
+          <a href="#">More <i class="fa-solid fa-chevron-down" style="font-size:.65rem;"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="../brochures/brochures.html" class="active">Brochures</a></li>
+            <li><a href="../dealerships/dealerships.html">Dealerships</a></li>
+            <li><a href="../faq/faq.html">FAQ</a></li>
+            <li><a href="../contact/contact.html">Contact</a></li>
+            <li><a href="../test-drive/test-drive.html">Test Drive</a></li>
+          </ul>
+        </li>
+        <li><a href="../dashboard/dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+        <li id="adminNavItem" style="display:none;"><a href="../admin/admin.html"><i
+              class="fa-solid fa-shield-halved"></i> Admin Panel</a></li>
+        <li><a href="../login/login.html" class="btn" style="padding:.4rem 1rem;font-size:.85rem;">Login</a></li>
+      </ul>
+    </nav>
+    <div class="controls-container">
+      <button id="layoutToggleBtn" class="toggle-btn" title="Switch Layout"><i class="fa-solid fa-table-columns"></i>
+        <span class="lbl-topbar">Sidebar</span><span class="lbl-sidebar">Top Nav</span></button>
+      <select id="themeSelect" class="theme-select">
+        <option value="dark-blue">Dark Blue</option>
+        <option value="purple">Purple</option>
+        <option value="emerald">Emerald</option>
+        <option value="light">Light</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="animate-fade-in">
+    <h2 class="section-title">Download E-Brochures</h2>
+    <p class="section-subtitle">Get detailed specifications and trim levels for our top models — click to open the full
+      Wikipedia page as your brochure.</p>
+
+    <table class="custom-table" style="margin-top:2rem;">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Description</th>
+          <th>Download</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="../assets/images/car-tesla.jpg"
+              style="height:40px;border-radius:4px;margin-right:8px;vertical-align:middle;"> <strong>2026 Tesla Model S
+              Plaid</strong></td>
+          <td>Tri-motor electric, 1,020 hp, 637 km range</td>
+          <td>
+            <a href="../brochures/tesla-model-s.pdf" target="_blank" class="btn btn-outline"
+              style="padding:0.4rem 1rem; margin-right: 0.5rem;"><i class="fa-solid fa-eye"></i> View</a>
+            <a href="../brochures/tesla-model-s.pdf" download class="btn" style="padding:0.4rem 1rem;"><i
+                class="fa-solid fa-download"></i> Download</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td><img src="../assets/images/porsche-taycan.jpg"
+              style="height:40px;border-radius:4px;margin-right:8px;vertical-align:middle;"> <strong>Porsche
+              Taycan</strong></td>
+          <td>High-performance electric/V8</td>
+          <td>
+            <a href="../brochures/porsche-taycan brochure.pdf" target="_blank" class="btn btn-outline"
+              style="padding:0.4rem 1rem; margin-right: 0.5rem;"><i class="fa-solid fa-eye"></i> View</a>
+            <a href="../brochures/porsche-taycan brochure.pdf" download class="btn" style="padding:0.4rem 1rem;"><i
+                class="fa-solid fa-download"></i> Download</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td><img src="../assets/images/car-ferrari.jpg"
+              style="height:40px;border-radius:4px;margin-right:8px;vertical-align:middle;"> <strong>Ferrari F8
+              Tributo</strong></td>
+          <td>3.9L Twin-Turbo V8, 710 hp, 340 km/h</td>
+          <td>
+            <a href="../brochures/cs_reveal_ferrari_f8_tributo_gbr.pdf" target="_blank" class="btn btn-outline"
+              style="padding:0.4rem 1rem; margin-right: 0.5rem;"><i class="fa-solid fa-eye"></i> View</a>
+            <a href="../brochures/cs_reveal_ferrari_f8_tributo_gbr.pdf" download class="btn"
+              style="padding:0.4rem 1rem;"><i class="fa-solid fa-download"></i> Download</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td><img src="../assets/images/car-bmw.jpg"
+              style="height:40px;border-radius:4px;margin-right:8px;vertical-align:middle;"> <strong>2026 BMW X5 M
+              Competition</strong></td>
+          <td>4.4L Twin-Turbo V8, 617 hp, AWD</td>
+          <td>
+            <a href="../brochures/The_new_X5_Brochure.pdf.asset.1697549636826.pdf" target="_blank"
+              class="btn btn-outline" style="padding:0.4rem 1rem; margin-right: 0.5rem;"><i class="fa-solid fa-eye"></i>
+              View</a>
+            <a href="../brochures/The_new_X5_Brochure.pdf.asset.1697549636826.pdf" download class="btn"
+              style="padding:0.4rem 1rem;"><i class="fa-solid fa-download"></i> Download</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td><img src="../assets/images/car-mustang.jpg"
+              style="height:40px;border-radius:4px;margin-right:8px;vertical-align:middle;"> <strong>Ford Mustang Shelby
+              GT500</strong></td>
+          <td>5.2L Supercharged V8, 760 hp, RWD</td>
+          <td>
+            <a href="../brochures/ford-caribbean-mustang-2022-brochure-download-eng.pdf" target="_blank"
+              class="btn btn-outline" style="padding:0.4rem 1rem; margin-right: 0.5rem;"><i class="fa-solid fa-eye"></i>
+              View</a>
+            <a href="../brochures/ford-caribbean-mustang-2022-brochure-download-eng.pdf" download class="btn"
+              style="padding:0.4rem 1rem;"><i class="fa-solid fa-download"></i> Download</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td><img src="../assets/images/car-lambo.jpg"
+              style="height:40px;border-radius:4px;margin-right:8px;vertical-align:middle;"> <strong>BUGATTI</strong>
+          </td>
+          <td>4.0L Quad-Turbo W16, 1500 hp, AWD Hypercar</td>
+          <td>
+            <a href="../brochures/Bugatti-EB-16.4-Veyron-2007.pdf" target="_blank" class="btn btn-outline"
+              style="padding:0.4rem 1rem; margin-right: 0.5rem;"><i class="fa-solid fa-eye"></i> View</a>
+            <a href="../brochures/Bugatti-EB-16.4-Veyron-2007.pdf" download class="btn" style="padding:0.4rem 1rem;"><i
+                class="fa-solid fa-download"></i> Download</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">&copy; 2026 NYH Motors. All rights reserved.</div>
+  </footer>
+
+  <script src="../js/main.js?v=2"></script>
+
+  <script src="brochures.js?v=2"></script>
+</body>
+
+</html>

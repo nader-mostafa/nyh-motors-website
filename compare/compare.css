@@ -1,0 +1,50 @@
+﻿/* Custom styles for compare */
+
+
+    .compare-selectors{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem;}
+    .car-selector-box{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.8rem;box-shadow:var(--shadow);}
+    .car-selector-box h3{margin-bottom:1rem;font-size:1rem;color:#888;text-transform:uppercase;letter-spacing:.8px;}
+    .search-results-dropdown{position:absolute;width:100%;background:var(--nav-bg);border:1px solid var(--border-color);border-radius:10px;box-shadow:var(--shadow-hover);z-index:100;top:calc(100% + 4px);left:0;max-height:240px;overflow-y:auto;}
+    .search-results-dropdown li{list-style:none;padding:.8rem 1rem;cursor:pointer;transition:background .2s;display:flex;align-items:center;gap:.8rem;}
+    .search-results-dropdown li:hover{background:var(--secondary-color);}
+    .search-results-dropdown img{width:52px;height:36px;object-fit:cover;border-radius:6px;}
+    .selector-wrap{position:relative;}
+    .selected-car-preview{margin-top:1rem;}
+    .selected-car-preview img{width:100%;height:180px;object-fit:cover;border-radius:var(--radius);}
+    .selected-car-preview p{margin-top:.6rem;font-weight:600;text-align:center;}
+    .compare-table-wrap{overflow-x:auto;margin-top:2rem;}
+    .compare-btn-area{text-align:center;margin:2rem 0;}
+    @media(max-width:700px){.compare-selectors{grid-template-columns:1fr;}}
+  
+
+/* Compare Table Fixes */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  backdrop-filter: var(--blur);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--glass-border);
+}
+.compare-table th, .compare-table td {
+  padding: 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid var(--glass-border);
+  color: var(--text-color);
+}
+.compare-table th {
+  background: rgba(0,0,0,0.2);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--accent-color);
+}
+.compare-table tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+.compare-table td:first-child {
+  font-weight: 600;
+  width: 25%;
+  color: var(--text-muted);
+}

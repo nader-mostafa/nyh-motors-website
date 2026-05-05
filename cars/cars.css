@@ -1,0 +1,36 @@
+﻿/* Custom styles for cars */
+
+.car-list-view {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.5rem !important;
+}
+.car-list-view .inventory-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  text-align: left !important;
+  height: auto !important;
+}
+.car-list-view .card-img-wrap {
+  width: 350px !important;
+  flex-shrink: 0 !important;
+  height: 100% !important;
+  min-height: 200px !important;
+}
+.car-list-view .inventory-card-body {
+  flex-grow: 1 !important;
+  padding: 2rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+@media(max-width: 800px) {
+  .car-list-view .inventory-card {
+    flex-direction: column !important;
+  }
+  .car-list-view .card-img-wrap {
+    width: 100% !important;
+    height: 220px !important;
+  }
+}

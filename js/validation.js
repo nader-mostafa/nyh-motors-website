@@ -1,4 +1,4 @@
-/* validation.js */
+﻿/* validation.js */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.custom-validate').forEach(form => {
     form.addEventListener('submit', function(e) {
@@ -22,3 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+

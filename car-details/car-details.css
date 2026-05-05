@@ -1,0 +1,35 @@
+﻿/* Custom styles for car-details */
+
+
+    .details-hero-img{width:100%;max-height:500px;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);display:block;}
+    .details-section{background:var(--card-bg);border:1px solid var(--border-color);border-radius:var(--radius);padding:2rem;margin-top:1.8rem;box-shadow:var(--shadow);}
+    .details-section h3{font-size:1.3rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem;}
+    .details-section h3 i{color:var(--accent-color);}
+    .car-title-bar{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;}
+    .car-price-big{font-size:2.4rem;font-weight:700;color:var(--accent-color);font-family:var(--font-display);}
+    .action-btns{display:flex;gap:.8rem;flex-wrap:wrap;}
+    .insurance-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
+    .insurance-box{background:var(--secondary-color);border:1px solid var(--border-color);border-radius:12px;padding:1.4rem;}
+    .insurance-box.featured{border-color:var(--accent-color);}
+    .insurance-box h4{margin-bottom:.4rem;}
+    .insurance-box .ins-price{font-size:1.4rem;font-weight:700;color:var(--accent-color);}
+    .tip-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.5rem;}
+    .tip-card{background:var(--secondary-color);border-radius:12px;padding:1.2rem;}
+    .tip-card i{color:var(--accent-color);font-size:1.3rem;margin-bottom:.6rem;display:block;}
+    .tip-card h5{margin-bottom:.4rem;font-size:.95rem;}
+    .tip-card p{font-size:.82rem;color:#888;margin:0;}
+    .loan-calc-box{background:var(--secondary-color);border:1px solid var(--border-color);border-radius:var(--radius);padding:1.8rem;}
+    .calc-result{background:var(--primary-color);color:#fff;border-radius:10px;padding:1rem;text-align:center;font-size:1.1rem;font-weight:700;margin-top:1rem;display:none;}
+    .brochure-modal{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .35s ease;}
+    .brochure-modal.open{opacity:1;pointer-events:all;}
+    .brochure-modal-inner{background:var(--card-bg);border-radius:20px;width:100%;max-width:920px;height:88vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.5);transform:scale(.95);transition:transform .35s ease;}
+    .brochure-modal.open .brochure-modal-inner{transform:scale(1);}
+    .brochure-modal-header{padding:1.1rem 1.6rem;border-bottom:1px solid var(--border-color);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+    .brochure-modal-header h3{margin:0;font-size:1rem;}
+    .brochure-close{background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--text-color);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+    .brochure-close:hover{background:var(--secondary-color);}
+    .brochure-modal iframe{width:100%;flex:1;border:none;}
+    @media(max-width:700px){.insurance-grid{grid-template-columns:1fr;}.tip-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:480px){.tip-grid{grid-template-columns:1fr;}}
+  
+

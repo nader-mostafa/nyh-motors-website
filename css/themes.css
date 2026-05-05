@@ -1,38 +1,150 @@
-/* themes.css — NHY Motors */
+/* ══════════════════════════════════════════════════════
+   themes.css — NYH Motors | Multi-Theme Design System
+   ══════════════════════════════════════════════════════ */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
 
-:root {
-  --bg-color: #f7f6f3;
-  --text-color: #111118;
-  --primary-color: #0f0f1a;
-  --secondary-color: #f0ede8;
-  --accent-color: #c8102e;
-  --card-bg: #ffffff;
-  --border-color: #e2dfd8;
-  --nav-bg: rgba(255,255,255,0.94);
-  --footer-bg: #0f0f1a;
-  --footer-text: #e8e6e0;
-  --shadow: 0 4px 28px rgba(0,0,0,0.07);
-  --shadow-hover: 0 16px 48px rgba(0,0,0,0.15);
-  --transition-speed: 0.3s;
-  --radius: 14px;
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Outfit', 'Segoe UI', sans-serif;
+/* ── Base Transitions for smooth theme switching ── */
+*, *::before, *::after {
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.25s ease;
 }
 
-[data-theme="dark"] {
-  --bg-color: #0a0a12;
-  --text-color: #e8e6e0;
-  --primary-color: #5b9cf6;
-  --secondary-color: #13131e;
-  --accent-color: #ff5470;
-  --card-bg: #13131e;
-  --border-color: #232334;
-  --nav-bg: rgba(10,10,18,0.96);
-  --footer-bg: #060610;
-  --footer-text: #e8e6e0;
-  --shadow: 0 4px 28px rgba(0,0,0,0.45);
-  --shadow-hover: 0 16px 48px rgba(0,0,0,0.65);
+/* ══════════════════════════════════════
+   THEME: Dark Blue (Default)
+   ══════════════════════════════════════ */
+:root,
+[data-theme="dark-blue"] {
+  /* Backgrounds */
+  --bg-color:        #050510;
+  --bg-gradient:     linear-gradient(135deg, #050510 0%, #0a0a2e 40%, #0d0628 70%, #050510 100%);
+  --card-bg:         rgba(12, 12, 38, 0.55);
+  --nav-bg:          rgba(5, 5, 20, 0.82);
+  --footer-bg:       #030310;
+  --secondary-color: rgba(255, 255, 255, 0.04);
+
+  /* Text */
+  --text-color:      #e8e6f0;
+  --text-muted:      rgba(232, 230, 240, 0.55);
+  --footer-text:     rgba(232, 230, 240, 0.7);
+
+  /* Accent */
+  --accent-color:    #4f8ef7;
+  --accent-glow:     rgba(79, 142, 247, 0.35);
+  --accent-hover:    #6fa3ff;
+
+  /* Structure */
+  --border-color:    rgba(79, 142, 247, 0.18);
+  --glass-border:    rgba(79, 142, 247, 0.22);
+  --primary-color:   #0d1f4f;
+
+  /* Effects */
+  --shadow:          0 8px 32px rgba(0, 0, 0, 0.55);
+  --shadow-hover:    0 20px 60px rgba(79, 142, 247, 0.25);
+  --glow:            0 0 30px rgba(79, 142, 247, 0.3);
+
+  /* System */
+  --radius:          16px;
+  --radius-sm:       10px;
+  --transition-speed:0.3s;
+  --font-display:    'Playfair Display', Georgia, serif;
+  --font-body:       'Outfit', 'Segoe UI', sans-serif;
+  --blur:            blur(20px);
+  --blur-sm:         blur(12px);
+}
+
+/* ══════════════════════════════════════
+   THEME: Purple
+   ══════════════════════════════════════ */
+[data-theme="purple"] {
+  --bg-color:        #08050f;
+  --bg-gradient:     linear-gradient(135deg, #08050f 0%, #160a2e 45%, #0e0620 80%, #08050f 100%);
+  --card-bg:         rgba(22, 10, 46, 0.55);
+  --nav-bg:          rgba(8, 5, 15, 0.85);
+  --footer-bg:       #050309;
+  --secondary-color: rgba(255, 255, 255, 0.04);
+
+  --text-color:      #ede8ff;
+  --text-muted:      rgba(237, 232, 255, 0.55);
+  --footer-text:     rgba(237, 232, 255, 0.7);
+
+  --accent-color:    #a855f7;
+  --accent-glow:     rgba(168, 85, 247, 0.4);
+  --accent-hover:    #c084fc;
+
+  --border-color:    rgba(168, 85, 247, 0.2);
+  --glass-border:    rgba(168, 85, 247, 0.25);
+  --primary-color:   #2d0f4f;
+
+  --shadow:          0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-hover:    0 20px 60px rgba(168, 85, 247, 0.3);
+  --glow:            0 0 35px rgba(168, 85, 247, 0.35);
+}
+
+/* ══════════════════════════════════════
+   THEME: Emerald Green
+   ══════════════════════════════════════ */
+[data-theme="emerald"] {
+  --bg-color:        #030d0a;
+  --bg-gradient:     linear-gradient(135deg, #030d0a 0%, #061a10 45%, #081510 80%, #030d0a 100%);
+  --card-bg:         rgba(6, 26, 16, 0.55);
+  --nav-bg:          rgba(3, 13, 10, 0.85);
+  --footer-bg:       #020a07;
+  --secondary-color: rgba(255, 255, 255, 0.04);
+
+  --text-color:      #e0f0ea;
+  --text-muted:      rgba(224, 240, 234, 0.55);
+  --footer-text:     rgba(224, 240, 234, 0.7);
+
+  --accent-color:    #10d48a;
+  --accent-glow:     rgba(16, 212, 138, 0.35);
+  --accent-hover:    #3bfca8;
+
+  --border-color:    rgba(16, 212, 138, 0.18);
+  --glass-border:    rgba(16, 212, 138, 0.25);
+  --primary-color:   #05301a;
+
+  --shadow:          0 8px 32px rgba(0, 0, 0, 0.55);
+  --shadow-hover:    0 20px 60px rgba(16, 212, 138, 0.25);
+  --glow:            0 0 30px rgba(16, 212, 138, 0.3);
+}
+
+/* ══════════════════════════════════════
+   THEME: Light (Tesla-inspired)
+   ══════════════════════════════════════ */
+[data-theme="light"] {
+  --bg-color:        #f5f7fa;
+  --bg-gradient:     linear-gradient(135deg, #f5f7fa 0%, #eef1f8 50%, #f5f7fa 100%);
+  --card-bg:         rgba(255, 255, 255, 0.75);
+  --nav-bg:          rgba(255, 255, 255, 0.88);
+  --footer-bg:       #0f0f1a;
+  --secondary-color: rgba(0, 0, 0, 0.03);
+
+  --text-color:      #0f1020;
+  --text-muted:      rgba(15, 16, 32, 0.55);
+  --footer-text:     rgba(232, 232, 240, 0.8);
+
+  --accent-color:    #1a56e8;
+  --accent-glow:     rgba(26, 86, 232, 0.25);
+  --accent-hover:    #2563eb;
+
+  --border-color:    rgba(0, 0, 0, 0.10);
+  --glass-border:    rgba(26, 86, 232, 0.15);
+  --primary-color:   #0f1020;
+
+  --shadow:          0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover:    0 16px 48px rgba(26, 86, 232, 0.18);
+  --glow:            0 0 24px rgba(26, 86, 232, 0.2);
+}
+
+/* ══════════════════════════════════════
+   LAYOUT STRUCTURE
+   ══════════════════════════════════════ */
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-color);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 body.layout-topbar {
@@ -41,11 +153,47 @@ body.layout-topbar {
   min-height: 100vh;
 }
 body.layout-topbar main { flex-grow: 1; }
+
+/* Sticky glass navbar for topbar */
 body.layout-topbar .main-header {
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+}
+
+/* Animated gradient orbs */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+body::before {
+  width: 600px; height: 600px;
+  top: -100px; right: -100px;
+  background: var(--accent-color);
+  animation: orbFloat 12s ease-in-out infinite;
+}
+body::after {
+  width: 500px; height: 500px;
+  bottom: 100px; left: -100px;
+  background: var(--accent-color);
+  opacity: 0.08;
+  animation: orbFloat 16s ease-in-out infinite reverse;
+}
+
+[data-theme="light"] body::before,
+[data-theme="light"] body::after { opacity: 0.05; }
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.97); }
 }

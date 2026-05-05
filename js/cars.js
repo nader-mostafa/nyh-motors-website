@@ -1,4 +1,4 @@
-/* cars.js - Browse Cars page logic */
+﻿/* cars.js - Browse Cars page logic */
 document.addEventListener('DOMContentLoaded', () => {
   const gridViewBtn = document.getElementById('gridViewBtn');
   const listViewBtn = document.getElementById('listViewBtn');
@@ -20,3 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+

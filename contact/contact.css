@@ -1,0 +1,12 @@
+﻿/* Custom styles for contact */
+
+
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info h3 { margin-bottom: 1.5rem; }
+    .contact-info .info-item { display:flex; gap:1rem; margin-bottom:1.5rem; }
+    .contact-info .info-item i { color:var(--accent-color); font-size:1.2rem; margin-top:3px; flex-shrink:0; }
+    .contact-info .info-item p { margin:0; color:#666; font-size:0.93rem; }
+    .contact-info .info-item strong { display:block; color:var(--text-color); margin-bottom:0.2rem; }
+    @media(max-width:800px){ .contact-layout{grid-template-columns:1fr;} }
+  
+
